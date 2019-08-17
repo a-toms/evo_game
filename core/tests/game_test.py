@@ -5,7 +5,6 @@ from core.game import Game
 class TestGame(unittest.TestCase):
     def test_initialise_players(self):
         player_names = ["Darwin", "Mendel", "Dawkins"]
-
         game = Game(player_names)
 
         self.assertEqual(

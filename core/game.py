@@ -22,8 +22,8 @@ class Game:
 
     def __generate_players(self, player_names: list) -> list:
         if len(set(player_names)) != len(player_names):
-            raise ValueError(f'Duplicate player names found:{player_names}')
+            raise ValueError(f'Duplicate player names found: {player_names}')
         elif len(player_names) > self.__max_players:
-            raise ValueError(f'Too many players ({len(player_names)}), maximum is {self.__max_players}')
+            raise ValueError(f'Too many players: {len(player_names)}. The maximum is: {self.__max_players}')
         else:
             return [Player(player_name) for player_name in player_names]
