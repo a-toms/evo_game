@@ -25,3 +25,7 @@ class TestGame(unittest.TestCase):
 
         self.assertRaises(ValueError, lambda: Game(player_names))
 
+    def test_deal_cards(self):
+
+
+
