@@ -1,0 +1,17 @@
+Code Conventions
+
+PYTHON
+- Keep only the code that evo_game uses. Do not write code merely because it might
+  be useful in the future
+- Add type hints to:
+  + every method that returns something.
+
+
+VCS (GIT) WORKFLOW
+- Never work directly on 'master' branch
+- Pull in latest master from remote repo and branch off that
+- Remove branches that are merged into 'master'
+
+Before submitting, and if updating, a Pull Request, verify that:
+- All existing tests pass.
+- You have written new tests (see testing section).
