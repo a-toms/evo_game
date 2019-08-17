@@ -26,3 +26,10 @@ class TestPlayer(unittest.TestCase):
             self.player.add_to_food_bag(5)
         )
 
+    def test_add_to_hand_cards(self):
+        card = 'new card'
+        self.player.add_to_hand_cards(card)
+        self.assertEqual(
+            ['new card'],
+            self.player.hand_cards
+        )

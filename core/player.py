@@ -1,3 +1,5 @@
+from typing import List
+
 class Player:
     def __init__(self, name):
         self.name = name
@@ -16,6 +18,10 @@ class Player:
     def add_to_food_bag(self, food) -> int:
         self.food_bag += food
         return self.food_bag
+
+    def add_to_hand_cards(self, card) -> List:
+        self.hand_cards.append(card)
+        return self.hand_cards
 
 
 
