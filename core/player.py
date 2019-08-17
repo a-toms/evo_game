@@ -1,14 +1,14 @@
 from typing import List
 
 class Player:
-    def __init__(self, name):
+    def __init__(self, name: str):
         self.name = name
         self.hand_cards = []
         self.species = []
         self.food_bag = 0
 
     def __str__(self) -> str:
-        return str(self.name)
+        return self.name
 
     @property
     def receives_how_many_cards_at_the_round_start(self) -> int:
