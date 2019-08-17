@@ -33,3 +33,4 @@ class Species:
         return f'Species: Pop {self.population} - Body size {self.body_size}' \
             f' - Food eaten {self.food_eaten} - Traits {self.traits}'
 
+

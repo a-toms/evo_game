@@ -1,8 +1,13 @@
 import unittest
 from core.game import Game
+from core.species import Species
 
 
 class TestGame(unittest.TestCase):
+    def setUp(self) -> None:
+        self.game = Game(["Huxley", "Charlesworth", "Haldane"])
+
+
     def test_initialise_players(self):
         player_names = ["Darwin", "Mendel", "Dawkins"]
         game = Game(player_names)
@@ -25,6 +30,34 @@ class TestGame(unittest.TestCase):
 
         self.assertRaises(ValueError, lambda: Game(player_names))
 
+    def test_deal_cards(self):
+        self.assertEqual(
+            0,
+            len(self.game.players[1].hand_cards)
+        )
+        self.game.deal_cards()
 
+        self.assertEqual(
+            5,
+            len(self.game.players[1].hand_cards)
+        )
+
+    def test_deal_cards__gives_more_cards_if_player_has_more_species(self):
+        self.game.players[1].species = [
+            Species(), Species(), Species(), Species()
+        ]
+
+        print(self.game.players[1].receives_how_many_cards_at_the_round_start)
+        self.game.deal_cards()
+
+        self.assertEqual(
+            0,
+            len(self.game.players[1].hand_cards)
+        )
+
+        self.assertEqual(
+            8,
+            len(self.game.players[1].hand_cards)
+        )
 
 

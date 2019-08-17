@@ -33,5 +33,10 @@ class Player:
 
 
 
+    # add_species(hand_card, position)
+    # remove the hand card, add a species to the left or right of existing species array.
+
+
+
 
 
