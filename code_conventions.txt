@@ -5,6 +5,7 @@ PYTHON
   be useful in the future
 - Add type hints to:
   + every method that returns something.
+- Name methods with the prefix '__' if the method is private.
 
 
 VCS (GIT) WORKFLOW
@@ -15,3 +16,10 @@ VCS (GIT) WORKFLOW
 Before submitting, and if updating, a Pull Request, verify that:
 - All existing tests pass.
 - You have written new tests (see testing section).
+
+
+TESTS:
+- Name the test function 'test_' + the name of function that you are testing.
+- When using assertEqual, the first argument is the expected value and the
+  second value is the actual value.
+
