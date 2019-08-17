@@ -18,7 +18,10 @@ class TestGame(unittest.TestCase):
         self.assertRaises(ValueError, lambda: Game(player_names))
 
     def test_too_many_players(self):
-        player_names = ["Watson", "Walace", "Profet", "Grant", "Buss", "Lenski", "Dobzhansky"]
+        player_names = [
+            "Watson", "Walace", "Profet", "Grant", "Buss", "Lenski",
+            "Dobzhansky"
+        ]
 
         self.assertRaises(ValueError, lambda: Game(player_names))
 

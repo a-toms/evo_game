@@ -3,7 +3,6 @@ from core.board import Board, ClimateScale
 
 
 class TestClimateScale(unittest.TestCase):
-
     def test_climate_scale_defaulting(self):
         climate_scale = ClimateScale()
         current_climate = climate_scale.current_climate()
@@ -32,7 +31,10 @@ class TestBoard(unittest.TestCase):
         self.board = Board()
 
     def test_empty_watering_hole_error(self):
-        self.assertRaises(ValueError, self.board.remove_food_from_watering_hole)
+        self.assertRaises(
+            ValueError,
+            self.board.remove_food_from_watering_hole
+        )
 
     def test_add_food_to_watering_hole(self):
         amount = 10

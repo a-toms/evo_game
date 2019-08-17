@@ -32,5 +32,6 @@ class Species:
 
     def __str__(self) -> str:
         # Todo: Separate the below into multiple lines that conform to PEP8.
-        return f'Species: Pop {self.population} - Body size {self.body_size} - Food eaten {self.food_eaten} - Traits {self.traits}'
+        return f'Species: Pop {self.population} - Body size {self.body_size}' \
+            f' - Food eaten {self.food_eaten} - Traits {self.traits}'
 
