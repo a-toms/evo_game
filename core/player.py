@@ -1,6 +1,7 @@
 from typing import List
 from .species import Species
 
+
 class Player:
     def __init__(self, name: str):
         self.name = name

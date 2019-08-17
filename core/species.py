@@ -1,8 +1,8 @@
 class Species:
     def __init__(self):
         self.traits = set()
-        self.population = 0
-        self.body_size = 0
+        self.population = 1
+        self.body_size = 1
         self.food_eaten = 0
 
     @property
