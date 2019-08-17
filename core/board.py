@@ -3,13 +3,13 @@ class Board:
         self.watering_hole = 0
         self.climate_scale = ClimateScale()
 
-    def add_food_to_watering_hole(self, amount):
+    def add_food_to_watering_hole(self, amount: int):
         self.__change_food(amount)
 
     def remove_food_from_watering_hole(self, amount=1):
         self.__change_food(-amount)
 
-    def __change_food(self, amount):
+    def __change_food(self, amount: int):
         if self.watering_hole + amount >= 0:
             self.watering_hole += amount
         else:
@@ -17,13 +17,13 @@ class Board:
 
 
 class Climate:
-    def __init__(self, name, food_adjust, affected_body_size_range, population_impact):
+    def __init__(self, name: str, food_adjust: int, affected_body_size_range: range, population_impact: int):
         self.name = name
         self.food_adjust = food_adjust
         self.affected_body_size_range = affected_body_size_range
         self.population_impact = population_impact
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'Climate: {self.name}'
 
 
@@ -42,10 +42,10 @@ class ClimateScale:
             4: Climate('Scorching', -20, range(1, 6), 4),
         }
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'Current {self.current_climate()}'
 
-    def current_climate(self):
+    def current_climate(self) -> Climate:
         return self.__scale[self.__marker_position]
 
     def increase_temperature(self):
@@ -54,7 +54,7 @@ class ClimateScale:
     def decrease_temperature(self):
         self.__change_marker_position(-1)
 
-    def __change_marker_position(self, change):
+    def __change_marker_position(self, change: int):
         current_position = self.__marker_position
         new_position = current_position + change
 
