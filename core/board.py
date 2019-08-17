@@ -1,13 +1,12 @@
 class Board:
-
     def __init__(self):
         self.watering_hole = 0
         self.climate_scale = ClimateScale()
 
-    def add_food(self, amount):
+    def add_food_to_watering_hole(self, amount):
         self.__change_food(amount)
 
-    def remove_food(self, amount=1):
+    def remove_food_from_watering_hole(self, amount=1):
         self.__change_food(-amount)
 
     def __change_food(self, amount):
@@ -18,7 +17,6 @@ class Board:
 
 
 class Climate:
-
     def __init__(self, name, food_adjust, affected_body_size_range, population_impact):
         self.name = name
         self.food_adjust = food_adjust
@@ -30,7 +28,6 @@ class Climate:
 
 
 class ClimateScale:
-
     def __init__(self):
         self.__marker_position = 0
         self.__scale = {
