@@ -1,2 +1,1 @@
-# evo_game
-Evolution game.
+# Evolution Game
