@@ -15,12 +15,12 @@ class Player:
         base_number_of_cards_to_receive = 4
         return base_number_of_cards_to_receive + len(self.species)
 
-    def add_to_food_bag(self, food) -> int:
+    def add_to_food_bag(self, food: int) -> int:
         self.food_bag += food
         return self.food_bag
 
-    def add_to_hand_cards(self, card) -> List:
-        self.hand_cards.append(card)
+    def add_to_hand_cards(self, cards: List) -> List:
+        self.hand_cards.extend(cards)
         return self.hand_cards
 
 

@@ -27,9 +27,9 @@ class TestPlayer(unittest.TestCase):
         )
 
     def test_add_to_hand_cards(self):
-        card = 'new card'
-        self.player.add_to_hand_cards(card)
+        cards = ['new card 1']
+        self.player.add_to_hand_cards(cards)
         self.assertEqual(
-            ['new card'],
+            ['new card 1'],
             self.player.hand_cards
         )
