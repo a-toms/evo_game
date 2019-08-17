@@ -6,13 +6,13 @@ class TestPlayer(unittest.TestCase):
     def setUp(self):
         self.player = Player(name='Dorothy')
 
-    def test_str_representation(self):
+    def test_str(self):
         self.assertEqual(
             'Dorothy',
             str(self.player),
         )
 
-    def test_receives_how_many_at_the_round_start(self):
+    def test_receives_how_many_cards_at_the_round_start(self):
         self.player.species = ['species 1', 'species 2', 'species 3']
         base_number = 4
         self.assertEqual(
