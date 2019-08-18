@@ -18,10 +18,10 @@ class Game:
     def __init__(self, player_names: list):
         self.players = self.__generate_players(player_names)
         self.round = 1
-        self.cards_remaining = [
+        self.draw_pile = [
             TraitCard(name=f'Trait{i}')
             for i in range(self.__total_trait_cards)
-        ]  # Todo: Replace self.cards_remaining with real traits.
+        ]  # Todo: Replace self.draw_pile with real traits.
         self.phase = Phase.DEAL
 
     def __generate_players(self, player_names: list) -> list:
@@ -37,9 +37,29 @@ class Game:
     def deal_cards(self):
         for player in self.players:
             number_of_cards = player.receives_how_many_cards_at_the_round_start
-            cards_to_give = self.cards_remaining[-number_of_cards:]
+            cards_to_give = self.draw_pile[-number_of_cards:]
             player.add_to_hand_cards(cards_to_give)
-            self.cards_remaining = self.cards_remaining[:-number_of_cards]
+            self.draw_pile = self.draw_pile[:-number_of_cards]
+
+    @property
+    def number_of_cards_in_draw_pile(self) -> int:
+        return len(self.draw_pile)
+
+    def __number_of_cards_to_deal_to_all_players(self) -> int:
+        total_number = 0
+        for player in self.players:
+            total_number += player.receives_how_many_cards_at_the_round_start
+        return total_number
+
+    @property
+    def has_enough_cards_to_deal_sufficient_cards_to_each_player(self) -> bool:
+        required_number = self.__number_of_cards_to_deal_to_all_players()
+        return self.number_of_cards_in_draw_pile >= required_number
+
+
+
+
+
 
 
 

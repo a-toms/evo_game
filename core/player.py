@@ -34,6 +34,14 @@ class Player:
         self.hand_cards.extend(cards)
         return self.hand_cards
 
+    # def add_species(self, hand_card, position: str):
+    #     removed_card = self.hand_cards.pop(hand_card)
+    #     if position == 'left':
+    #         # append left
+    #     if position == 'right':
+    #         self.species.
+
+
 
 
     # todo wrote: add_species(hand_card, position)

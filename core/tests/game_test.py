@@ -60,8 +60,36 @@ class TestGame(unittest.TestCase):
         )
 
     def test_deal_cards_removes_trait_cards_from_the_cards_remaining(self):
-        self.assertEqual(177, len(self.game.cards_remaining))
+        self.assertEqual(177, len(self.game.draw_pile))
         self.game.deal_cards()
-        self.assertEqual(162, len(self.game.cards_remaining))
+        self.assertEqual(162, len(self.game.draw_pile))
 
+    def test_number_of_cards_in_draw_pile(self):
+        self.assertEqual(177, self.game.number_of_cards_in_draw_pile)
+
+    def test_number_of_cards_in_draw_pile__updates_after_deal(self):
+        self.game.deal_cards()
+        self.assertEqual(162, self.game.number_of_cards_in_draw_pile)
+
+    def test_has_enough_cards_to_deal_sufficient_cards_to_each_player__true(self):
+        """
+        There are 3 players. Each player receives 5 cards in the deal phase.
+        """
+        self.game.draw_pile = self.game.draw_pile[:15]
+
+        self.assertEqual(
+            True,
+            self.game.has_enough_cards_to_deal_sufficient_cards_to_each_player
+        )
+
+    def test_has_enough_cards_to_deal_sufficient_cards_to_each_player__false(self):
+        """
+        There are 3 players. Each player receives 5 cards in the deal phase.
+        """
+        self.game.draw_pile = self.game.draw_pile[:14]
+
+        self.assertEqual(
+            False,
+            self.game.has_enough_cards_to_deal_sufficient_cards_to_each_player
+        )
 
