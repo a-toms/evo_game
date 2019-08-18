@@ -1,5 +1,7 @@
 import unittest
 from core.player import Player
+from core.trait_card import TraitCard
+from core.constants import SpeciesPosition
 
 
 class TestPlayer(unittest.TestCase):
@@ -43,3 +45,20 @@ class TestPlayer(unittest.TestCase):
             ['new card 1'],
             self.player.hand_cards
         )
+
+    def test_add_species__removes_discard_card_from_player_hand_cards(self):
+        self.player.hand_cards.extend(
+            [TraitCard(name='Trait 1'), TraitCard(name='Trait 2')]
+        )
+        self.player.add_species(
+            discard_card=self.player.hand_cards[0],
+            position=SpeciesPosition.RIGHT
+        )
+
+        self.assertEqual(
+            [TraitCard(name='Trait 2')],
+            self.player.hand_cards
+        )
+
+    # Todo: write add_species position left and right tests.
+
