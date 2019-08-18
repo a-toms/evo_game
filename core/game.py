@@ -17,6 +17,9 @@ class Game:
     __total_trait_cards = 177
 
     def __init__(self, player_names: list):
+        """
+        Note that the first phase is the deal phase.
+        """
         self.board = Board()
         self.players = self.__generate_players(player_names)
         self.round = 1
@@ -36,35 +39,6 @@ class Game:
         else:
             return [Player(player_name) for player_name in player_names]
 
-    def deal_cards(self) -> bool:
-        if self.__has_enough_cards_to_deal_to_each_player():
-            for player in self.players:
-                number_of_cards = player.receives_how_many_cards_at_round_start
-                cards_to_give = self.draw_pile[-number_of_cards:]
-                player.add_to_hand_cards(cards_to_give)
-                self.draw_pile = self.draw_pile[:-number_of_cards]
-            return True
-        else:
-            return False
-
     @property
     def number_of_cards_in_draw_pile(self) -> int:
         return len(self.draw_pile)
-
-    def __number_of_cards_to_deal_to_all_players(self) -> int:
-        total_number = 0
-        for player in self.players:
-            total_number += player.receives_how_many_cards_at_round_start
-        return total_number
-
-    def __has_enough_cards_to_deal_to_each_player(self) -> bool:
-        required_number = self.__number_of_cards_to_deal_to_all_players()
-        return self.number_of_cards_in_draw_pile >= required_number
-
-
-
-
-
-
-
-
