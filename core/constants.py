@@ -19,3 +19,12 @@ class PhaseState(Enum):
     READY_TO_END = auto()
     ENDED = auto()
     GAME_OVER = auto()
+
+
+class TraitCategory(Enum):
+    DEFENSIVE = auto()
+    EATING = auto()
+    CARNIVORE = auto()
+    CLIMATE = auto()
+    OTHER = auto()
+
