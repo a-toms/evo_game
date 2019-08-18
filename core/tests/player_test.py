@@ -1,7 +1,7 @@
 import unittest
 from core.player import Player
 from core.trait_card import TraitCard
-from core.constants import Position
+from core.constants import SpeciesPosition
 
 
 class TestPlayer(unittest.TestCase):
@@ -51,7 +51,8 @@ class TestPlayer(unittest.TestCase):
             [TraitCard(name='Trait 1'), TraitCard(name='Trait 2')]
         )
         self.player.add_species(
-            discard_card=self.player.hand_cards[0], position=Position.RIGHT
+            discard_card=self.player.hand_cards[0],
+            position=SpeciesPosition.RIGHT
         )
 
         self.assertEqual(

@@ -1,7 +1,7 @@
 from typing import List
 from core.species import Species
 from core.trait_card import TraitCard
-from core.constants import Position
+from core.constants import SpeciesPosition
 
 
 class Player:
@@ -36,11 +36,11 @@ class Player:
         self.hand_cards.extend(cards)
         return self.hand_cards
 
-    def add_species(self, discard_card: TraitCard, position: Position):
+    def add_species(self, discard_card: TraitCard, position: SpeciesPosition):
         self.hand_cards.remove(discard_card)
-        if position == position.LEFT:
+        if position == SpeciesPosition.LEFT:
             self.species.append(Species())
-        elif position == position.RIGHT:
+        elif position == SpeciesPosition.RIGHT:
             self.species.insert(0, Species())
 
 

@@ -29,7 +29,7 @@ class DealPhase(Phase):
     def deal_cards(self) -> bool:
         if self.__can_deal():
             self.__distribute_cards()
-            self._state = PhaseState.ENDED
+            self._state = PhaseState.READY_TO_END
             return True
         else:
             self._state = PhaseState.GAME_OVER
@@ -47,9 +47,6 @@ class DealPhase(Phase):
             return True
         else:
             return False
-
-    def end(self) -> PhaseState:
-        return self._state
 
     @property
     def __number_of_cards_in_draw_pile(self) -> int:

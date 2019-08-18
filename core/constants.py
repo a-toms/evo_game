@@ -1,7 +1,7 @@
 from enum import auto, Enum
 
 
-class Position(Enum):
+class SpeciesPosition(Enum):
     LEFT = auto()
     RIGHT = auto()
 
@@ -12,7 +12,6 @@ class Phase(Enum):
     PLAY_CARDS = auto()
     MODIFY_ENVIRONMENT = auto()
     FEEDING = auto()
-    GAME_OVER = auto()
 
 
 class PhaseState(Enum):
