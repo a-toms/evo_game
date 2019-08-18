@@ -38,9 +38,9 @@ class Player:
 
     def add_species(self, discard_card: TraitCard, position: SpeciesPosition):
         self.hand_cards.remove(discard_card)
-        if position == SpeciesPosition.LEFT:
+        if position == SpeciesPosition.RIGHT:
             self.species.append(Species())
-        elif position == SpeciesPosition.RIGHT:
+        elif position == SpeciesPosition.LEFT:
             self.species.insert(0, Species())
 
 

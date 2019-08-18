@@ -1,9 +1,10 @@
 class Species:
-    def __init__(self):
+    def __init__(self, name='nameless species'):
         self.traits = set()
         self.population = 1
         self.body_size = 1
         self.food_eaten = 0
+        self.name = name
 
     @property
     def is_hungry(self) -> bool:

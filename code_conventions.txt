@@ -1,6 +1,9 @@
 Code Conventions
 
 PYTHON
+- Import statement arrangment:
+  +  Top: python library imports. Below: external imports. Below: local import.
+     Within each category, alphabeticise imports.
 - Keep only the code that evo_game uses. Do not write code merely because it might
   be useful in the future
 - Add type hints to:
