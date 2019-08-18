@@ -1,3 +1,4 @@
+from core.board import Board
 from core.player import Player
 from core.trait_card import TraitCard
 from enum import auto, Enum
@@ -16,6 +17,7 @@ class Game:
     __total_trait_cards = 177
 
     def __init__(self, player_names: list):
+        self.board = Board()
         self.players = self.__generate_players(player_names)
         self.round = 1
         self.draw_pile = [
