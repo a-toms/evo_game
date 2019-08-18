@@ -53,7 +53,8 @@ class SelectFoodAndClimatePhase(Phase):
 
     def __update_food(self):
         total_food = sum([card.food_effect for card in self.watering_hole_cards])
-        self._game.board.add_food_to_watering_hole(total_food)
+        if total_food > 0:
+            self._game.board.add_food_to_watering_hole(total_food)
 
     def __update_climate_and_food(self):
         self.__update_food()

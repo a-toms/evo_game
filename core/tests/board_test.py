@@ -3,25 +3,24 @@ from core.board import Board, ClimateScale
 
 
 class TestClimateScale(unittest.TestCase):
+    def setUp(self):
+        self.climate_scale = ClimateScale()
+
     def test_climate_scale_defaulting(self):
-        climate_scale = ClimateScale()
-        current_climate = climate_scale.current_climate()
+        current_climate = self.climate_scale.current_climate()
 
         self.assertEqual('Temperate', current_climate.name)
 
     def test_temperature_increase(self):
-        climate_scale = ClimateScale()
-        climate_scale.increase_temperature()
-        current_climate = climate_scale.current_climate()
+        self.climate_scale.increase_temperature()
+        current_climate = self.climate_scale.current_climate()
 
         self.assertEqual('Warm', current_climate.name)
 
     def test_temperature_decrease(self):
-        climate_scale = ClimateScale()
-
-        climate_scale.decrease_temperature()
-        climate_scale.decrease_temperature()
-        current_climate = climate_scale.current_climate()
+        self.climate_scale.decrease_temperature()
+        self.climate_scale.decrease_temperature()
+        current_climate = self.climate_scale.current_climate()
 
         self.assertEqual('Cold', current_climate.name)
 
