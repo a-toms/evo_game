@@ -47,17 +47,21 @@ class TestGame(unittest.TestCase):
             Species(), Species(), Species(), Species()
         ]
 
-        print(self.game.players[1].receives_how_many_cards_at_the_round_start)
-        self.game.deal_cards()
-
         self.assertEqual(
             0,
             len(self.game.players[1].hand_cards)
         )
 
+        self.game.deal_cards()
+
         self.assertEqual(
             8,
             len(self.game.players[1].hand_cards)
         )
+
+    def test_deal_cards_removes_trait_cards_from_the_cards_remaining(self):
+        self.assertEqual(177, len(self.game.cards_remaining))
+        self.game.deal_cards()
+        self.assertEqual(162, len(self.game.cards_remaining))
 
 

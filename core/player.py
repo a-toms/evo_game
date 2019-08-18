@@ -12,6 +12,9 @@ class Player:
     def __str__(self) -> str:
         return self.name
 
+    def __repr__(self) -> str:
+        return f'Player {self.name}'
+
     @property
     def receives_how_many_cards_at_the_round_start(self) -> int:
         base_number_of_cards_to_receive = 4

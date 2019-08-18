@@ -12,6 +12,7 @@ class TestPlayer(unittest.TestCase):
             str(self.player),
         )
 
+
     def test_receives_how_many_cards_at_the_round_start(self):
         self.player.species = ['species 1', 'species 2', 'species 3']
         base_number = 4
