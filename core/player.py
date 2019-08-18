@@ -1,5 +1,6 @@
 from typing import List
 from core.species import Species
+from core.trait_card import TraitCard
 
 
 class Player:
@@ -34,18 +35,17 @@ class Player:
         self.hand_cards.extend(cards)
         return self.hand_cards
 
-    # def add_species(self, hand_card, position: str):
-    #     removed_card = self.hand_cards.pop(hand_card)
-    #     if position == 'left':
-    #         # append left
-    #     if position == 'right':
-    #         self.species.
-
-
-
-
     # todo wrote: add_species(hand_card, position)
     # remove the hand card, add a species to the left or right of existing species array.
+    def add_species(self, discard_card: TraitCard, position: str):
+        self.hand_cards.remove(discard_card)
+        if position == 'left':
+            self.species.append(Species())
+        elif position == 'right':
+            self.species.insert(0, Species())
+
+
+
 
 
 
