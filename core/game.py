@@ -1,16 +1,8 @@
 from core.board import Board
 from core.player import Player
 from core.trait_card import TraitCard
-from enum import auto, Enum
+from core.constants import Phase
 
-
-class Phase(Enum):
-    DEAL = auto()
-    SELECT_FOOD_AND_CLIMATE = auto()
-    PLAY_CARDS = auto()
-    MODIFY_ENVIRONMENT = auto()
-    FEEDING = auto()
-    GAME_OVER = auto()
 
 
 class Game:

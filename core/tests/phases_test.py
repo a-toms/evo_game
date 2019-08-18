@@ -6,11 +6,11 @@ from core.trait_card import TraitCard
 
 class TestSelectFoodAndClimatePhase(unittest.TestCase):
     def setUp(self):
-        self._game = Game(["Smith", "Gould"])
-        self.phase = SelectFoodAndClimatePhase(self._game)
+        self.game = Game(["Smith", "Gould"])
+        self.phase = SelectFoodAndClimatePhase(self.game)
 
     def test_ready_to_end(self):
-        for player in self._game.players:
+        for player in self.game.players:
             card = TraitCard("Trait1")
             player.add_to_hand_cards([card])
             self.phase.play_card(player, card)

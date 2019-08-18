@@ -1,4 +1,3 @@
-A
 Ella Al-Shamahi
 Pere Alberch
 Susan Alberts
@@ -9,18 +8,16 @@ Wyatt Anderson
 Wallace Arthur
 Peter Ax
 
-B
 Donna Baird
-Robin Baker (biologist)
+Robin Baker
 Francis Maitland Balfour
 Jillian Banfield
 Marcello Barbieri
 John Barnabas
 Nick Barton
 Henry Walter Bates
-Bay Area Biosystematists
 Dawn R. Bazely
-Graham Bell (biologist)
+Graham Bell
 Lev Berg
 Carl Bergstrom
 Rüdiger Bieler
@@ -41,14 +38,13 @@ James J. Bull
 Leo Buss
 Alexey Bystrow
 
-C
 William H. Cade
 Arthur Cain
 Shane Campbell-Staton
 Rebecca L. Cann
 Tim Caro
 Geoffrey Douglas Hale Carpenter
-Scott Carroll (biologist)
+Scott Carroll
 Sean B. Carroll
 Thomas Cavalier-Smith
 Benjamin Chan
@@ -56,13 +52,12 @@ Brian Charlesworth
 Édouard Chatton
 Alan Cheetham
 Jens Clausen
-Jacob Cohen (scientist)
+Jacob Cohen
 Richard G. Colling
 Simon Conway Morris
 Henry Crampton
 Bernard Crespi
 
-D
 Reinhard Dallinger
 Charles Darwin
 Liliana M. Dávalos
@@ -76,7 +71,6 @@ Russell Doolittle
 Meghan Duffy
 Robin Dunbar
 
-E
 Dieter Ebert
 A. W. F. Edwards
 Niles Eldredge
@@ -85,24 +79,21 @@ John Endler
 Michael S. Engel
 Paul W. Ewald
 
-F
 Marcus Feldman
 Joseph Felsenstein
 Jeremy Field
 Stuart Firestein
 Ronald Fisher
-Ronald Fisher bibliography
 W. Tecumseh Fitch
 Walter M. Fitch
 Diana Fleischman
 William Henry Flower
-Robert Foley (academic)
+Robert Foley
 E. B. Ford
 Patrick Forterre
-Steven Frank (biologist)
+Steven Frank
 Douglas J. Futuyma
 
-G
 Raghavendra Gadagkar
 Francis Galton
 Jennifer Gardy
@@ -111,7 +102,7 @@ Walter Garstang
 Henry Gee
 Marcus Thomas Pius Gilbert
 John H. Gillespie
-Rosemary Gillespie (biologist)
+Rosemary Gillespie
 Philip D. Gingerich
 Lev R. Ginzburg
 Tijs Goldschmidt
@@ -130,9 +121,8 @@ William King Gregory
 Bryan Grenfell
 J. T. Gulick
 
-H
 Ernst Haeckel
-David Haig (biologist)
+David Haig
 J. B. S. Haldane
 Brian K. Hall
 W. D. Hamilton
@@ -150,7 +140,7 @@ David Hillis
 Katie Hinde
 Lancelot Hogben
 Joseph Dalton Hooker
-David Houle (biologist)
+David Houle
 Alasdair Houston
 Sarah Blaffer Hrdy
 Raymond B. Huey
@@ -159,7 +149,6 @@ Charles Chamberlain Hurst
 Julian Huxley
 Thomas Henry Huxley
 
-J
 Eva Jablonka
 John Jaenike
 William Jeffery
@@ -170,7 +159,6 @@ Amitabh Joshi
 Olivia Judson
 Thomas H. Jukes
 
-K
 Patrick J. Keeling
 Laurent Keller
 Vernon Lyman Kellogg
@@ -183,12 +171,11 @@ Arnold G. Kluge
 Hanna Kokko
 Alexey Kondrashov
 Gert Korthof
-David Krakauer (scientist)
+David Krakauer
 Johannes Krause
 Harald W. Krenn
 Ulrich Kutschera
 
-L
 David Lack
 Jeffrey Laitman
 James A. Lake
@@ -207,9 +194,8 @@ Richard Lewontin
 Wen-Hsiung Li
 Thierry Lodé
 Adam Łomnicki
-Michael Lynch (geneticist)
+Michael Lynch
 
-M
 Ruth Mace
 Jane Maienschein
 Michael Majerus
@@ -221,7 +207,6 @@ John Maynard Smith
 Ernst Mayr
 Barbara McClintock
 
-M
 Johnjoe McFadden
 Guy McPherson
 Konstantin Mereschkowski
@@ -236,10 +221,9 @@ Mary Morgan-Richards
 Martin Moynihan
 Fritz Müller
 Gerd B. Müller
-Hermann Müller (botanist)
+Hermann Müller
 PZ Myers
 
-N
 Adolf Naef
 Thomas J. Near
 Masatoshi Nei
@@ -248,19 +232,17 @@ Karen E. Nelson
 Randolph M. Nesse
 Eviatar Nevo
 Alfred Newton
-Rasmus Nielsen (biologist)
+Rasmus Nielsen
 H. Frederik Nijhout
 Glenn Northcutt
 Martin Nowak
 
-O
 Charles Ofria
 Susumu Ohno
 Tomoko Ohta
 H. Allen Orr
 Dan Otte
 
-P
 Roderic D. M. Page
 Mark Pagel
 A. Richard Palmer
@@ -278,17 +260,15 @@ Hendrik Poinar
 Edward Bagnall Poulton
 Richard Prum
 
-Q
 Kevin de Queiroz
 David C. Queller
 
-R
 Dronamraju Krishna Rao
 Rosemary Redfield
 G. Archdall Reid
 Bernhard Rensch
 Edward Loranus Rice
-Mark Ridley (zoologist)
+Mark Ridley
 Daniel K. Riskin
 Luiz A. Rocha
 Derek Roff
@@ -297,11 +277,10 @@ George Rolleston
 George Romanes
 Michael R. Rose
 Noah Rosenberg
-John Roth (geneticist)
+John Roth
 Joan Roughgarden
 Graeme Ruxton
 
-S
 Elisabet Sahtouris
 Lauren Sallan
 Henric Sanielevici
@@ -326,31 +305,28 @@ Kimmen Sjölander
 Marla Sokolowski
 Ralf J. Sommer
 Steven M. Stanley
-William Stanley (mammalogist)
+William Stanley
 Stephen C. Stearns
 G. Ledyard Stebbins
 David Stenhouse
 Mark Stoneking
 Joan E. Strassmann
-John Struthers (anatomist)
+John Struthers
 Eörs Szathmáry
 
-T
 Üner Tan
 Hans Thewissen
 Richard W. Thorington Jr.
-Joseph Thornton (biologist)
+Joseph Thornton
 Gustav Tornier
 Robert Trivers
 Peter Turchin
 Göte Turesson
 
-V
 James W. Valentine
 Leigh Van Valen
 Mihail Vlădescu
 
-W
 Michael J. Wade
 Andreas Wagner
 Günter P. Wagner
@@ -373,7 +349,7 @@ Edward O. Wiley
 Claus O. Wilke
 Eske Willerslev
 Arthur Willey
-George C. Williams (biologist)
+George C. Williams
 Melissa A. Wilson Sayres
 Allan Wilson
 E. O. Wilson
@@ -381,10 +357,8 @@ William C. Wimsatt
 Sewall Wright
 Tristram Wyatt
 
-Y
 Jeremy Yoder
 
-Z
 Amotz Zahavi
 Avishag Zahavi
 Cheryl A. Zimmer

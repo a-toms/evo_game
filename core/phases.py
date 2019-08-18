@@ -2,14 +2,7 @@ import abc
 from core.game import Game
 from core.player import Player
 from core.trait_card import TraitCard
-from enum import auto, Enum
-
-
-class PhaseState(Enum):
-    WAITING_FOR_PLAYER_ACTIONS = auto()  # Perhaps rename to WAITING_FOR_ACTIONS.
-    READY_TO_END = auto()
-    ENDED = auto()
-    GAME_OVER = auto()
+from core.constants import PhaseState
 
 
 class Phase(abc.ABC):
@@ -60,7 +53,7 @@ class DealPhase(Phase):
 
     @property
     def __number_of_cards_in_draw_pile(self) -> int:
-        return len(self._game.draw_pile)
+        return self._game.number_of_cards_in_draw_pile
 
     def __number_of_cards_to_deal_to_all_players(self) -> int:
         total_number = 0
