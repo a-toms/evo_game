@@ -1,12 +1,12 @@
 from typing import List
-from .species import Species
+from core.species import Species
 
 
 class Player:
     def __init__(self, name: str):
         self.name = name
         self.hand_cards = []
-        self.species = [Species()]
+        self.species = [Species()]  # Player starts with one species.
         self.food_bag = 0
 
     def __str__(self) -> str:
@@ -21,7 +21,7 @@ class Player:
         if len(self.species) == 0:
             raise ValueError(
                 f'Every player must have at least one species when it ' +
-                f'receives cards'
+                f'receives cards.'
             )
         else:
             return base_number_of_cards_to_receive + len(self.species)
@@ -36,7 +36,7 @@ class Player:
 
 
 
-    # add_species(hand_card, position)
+    # todo wrote: add_species(hand_card, position)
     # remove the hand card, add a species to the left or right of existing species array.
 
 

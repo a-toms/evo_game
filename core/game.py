@@ -18,7 +18,10 @@ class Game:
     def __init__(self, player_names: list):
         self.players = self.__generate_players(player_names)
         self.round = 1
-        self.cards_remaining = [TraitCard(name=f'Trait{i}') for i in range(177)]  # Todo: Replace with real traits.
+        self.cards_remaining = [
+            TraitCard(name=f'Trait{i}')
+            for i in range(self.__total_trait_cards)
+        ]  # Todo: Replace self.cards_remaining with real traits.
         self.phase = Phase.DEAL
 
     def __generate_players(self, player_names: list) -> list:
