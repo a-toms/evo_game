@@ -16,10 +16,10 @@ class Phase(abc.ABC):
         self._state = PhaseState.WAITING_FOR_PLAYER_ACTIONS
         self._parent = parent
 
-    def _accepting_actions(self):
+    def _accepting_actions(self) -> bool:
         return PhaseState.WAITING_FOR_PLAYER_ACTIONS == self._state
 
-    def _ready_to_end(self):
+    def _ready_to_end(self) -> bool:
         return PhaseState.READY_TO_END == self._state
 
     def end(self) -> PhaseState:
@@ -35,7 +35,7 @@ class SelectFoodAndClimatePhase(Phase):
         self.watering_hole_cards = []
         self.played_this_round = []
 
-    def __update_state(self):
+    def __update_state(self) -> PhaseState:
         if set(self._parent.players) == set(self.played_this_round):
             self._state = PhaseState.READY_TO_END
 
@@ -72,7 +72,7 @@ class SelectFoodAndClimatePhase(Phase):
 
         return self.__update_state()
 
-    def end(self) -> bool:
+    def end(self) -> PhaseState:
         if self._ready_to_end():
             self.__update_climate_and_food()
             self._state = PhaseState.ENDED
