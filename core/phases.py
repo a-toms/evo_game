@@ -6,9 +6,10 @@ from enum import auto, Enum
 
 
 class PhaseState(Enum):
-    WAITING_FOR_PLAYER_ACTIONS = auto()
+    WAITING_FOR_PLAYER_ACTIONS = auto()  # Perhaps rename to WAITING_FOR_ACTIONS.
     READY_TO_END = auto()
     ENDED = auto()
+    GAME_OVER = auto()
 
 
 class Phase(abc.ABC):
@@ -33,15 +34,29 @@ class DealPhase(Phase):
         super().__init__(game)
 
     def deal_cards(self) -> bool:
+        if self.__can_deal():
+            self.__distribute_cards()
+            self._state = PhaseState.ENDED
+            return True
+        else:
+            self._state = PhaseState.GAME_OVER
+            return False
+
+    def __distribute_cards(self):
+        for player in self._game.players:
+            number_of_cards = player.receives_how_many_cards_at_round_start
+            cards_to_give = self._game.draw_pile[-number_of_cards:]
+            player.add_to_hand_cards(cards_to_give)
+            self._game.draw_pile = self._game.draw_pile[:-number_of_cards]
+
+    def __can_deal(self) -> bool:
         if self.__has_enough_cards_to_deal_to_each_player():
-            for player in self._game.players:
-                number_of_cards = player.receives_how_many_cards_at_round_start
-                cards_to_give = self._game.draw_pile[-number_of_cards:]
-                player.add_to_hand_cards(cards_to_give)
-                self._game.draw_pile = self._game.draw_pile[:-number_of_cards]
             return True
         else:
             return False
+
+    def end(self) -> PhaseState:
+        return self._state
 
     @property
     def __number_of_cards_in_draw_pile(self) -> int:
@@ -103,5 +118,4 @@ class SelectFoodAndClimatePhase(Phase):
             self.__update_climate_and_food()
             self._state = PhaseState.ENDED
         return self._state
-
 

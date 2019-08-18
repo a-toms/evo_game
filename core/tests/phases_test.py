@@ -18,5 +18,3 @@ class TestSelectFoodAndClimatePhase(unittest.TestCase):
         state = self.phase.end()
 
         self.assertEqual(PhaseState.ENDED, state)
-
-

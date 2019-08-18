@@ -10,6 +10,7 @@ class Phase(Enum):
     PLAY_CARDS = auto()
     MODIFY_ENVIRONMENT = auto()
     FEEDING = auto()
+    GAME_OVER = auto()
 
 
 class Game:

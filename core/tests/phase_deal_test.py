@@ -42,12 +42,19 @@ class TestDealPhase(unittest.TestCase):
     def test_deal_cards_removes_trait_cards_from_the_draw_pile(self):
         self.assertEqual(177, len(self._game.draw_pile))
         self.deal_phase.deal_cards()
-        self.assertEqual(162, len(self._game.draw_pile))
 
+        self.assertEqual(
+            162,
+            len(self._game.draw_pile)
+        )
 
     def test_number_of_cards_in_draw_pile__updates_after_deal(self):
         self.deal_phase.deal_cards()
-        self.assertEqual(162, self._game.number_of_cards_in_draw_pile)
+
+        self.assertEqual(
+            162,
+            self._game.number_of_cards_in_draw_pile
+        )
 
     def test_deal_cards__return_true_if_dealt_cards(self):
         """
@@ -70,3 +77,22 @@ class TestDealPhase(unittest.TestCase):
             False,
             self.deal_phase.deal_cards()
         )
+
+    def test_end__returns_game_over_phase_state_if_cannot_deal(self):
+        self._game.draw_pile = self._game.draw_pile[:14]  # There are not enough cards to deal.
+        self.deal_phase.deal_cards()
+
+        self.assertEqual(
+            PhaseState.GAME_OVER,
+            self.deal_phase.end()
+        )
+
+    def test_end__returns_ended_phase_state_after_deal(self):
+        self._game.draw_pile = self._game.draw_pile[:15]  # There are enough cards to deal.
+        self.deal_phase.deal_cards()
+
+        self.assertEqual(
+            PhaseState.ENDED,
+            self.deal_phase.end()
+        )
+
