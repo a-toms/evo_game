@@ -1,9 +1,8 @@
-
 class Species:
     def __init__(self):
         self.traits = set()
-        self.population = 0
-        self.body_size = 0
+        self.population = 1
+        self.body_size = 1
         self.food_eaten = 0
 
     @property
@@ -31,6 +30,7 @@ class Species:
         self.food_eaten += food
 
     def __str__(self) -> str:
-        # Todo: Separate the below into multiple lines that conform to PEP8.
-        return f'Species: Pop {self.population} - Body size {self.body_size} - Food eaten {self.food_eaten} - Traits {self.traits}'
+        return f'Species: Pop {self.population} - Body size {self.body_size}' \
+            f' - Food eaten {self.food_eaten} - Traits {self.traits}'
+
 

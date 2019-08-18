@@ -15,9 +15,18 @@ class TestPlayer(unittest.TestCase):
     def test_receives_how_many_cards_at_the_round_start(self):
         self.player.species = ['species 1', 'species 2', 'species 3']
         base_number = 4
+
         self.assertEqual(
             base_number + len(self.player.species),
-            self.player.receives_how_many_cards_at_the_round_start
+            self.player.receives_how_many_cards_at_round_start
+        )
+
+    def test_receives_how_many_cards_at_the_round_start_raises_error_if_no_species(self):
+        self.player.species = []
+
+        self.assertRaises(
+            ValueError,
+            lambda: self.player.receives_how_many_cards_at_round_start
         )
 
     def test_add_to_food_bag(self):
@@ -29,6 +38,7 @@ class TestPlayer(unittest.TestCase):
     def test_add_to_hand_cards(self):
         cards = ['new card 1']
         self.player.add_to_hand_cards(cards)
+
         self.assertEqual(
             ['new card 1'],
             self.player.hand_cards
