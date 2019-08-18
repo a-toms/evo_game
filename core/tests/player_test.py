@@ -12,14 +12,13 @@ class TestPlayer(unittest.TestCase):
             str(self.player),
         )
 
-
     def test_receives_how_many_cards_at_the_round_start(self):
         self.player.species = ['species 1', 'species 2', 'species 3']
         base_number = 4
 
         self.assertEqual(
             base_number + len(self.player.species),
-            self.player.receives_how_many_cards_at_the_round_start
+            self.player.receives_how_many_cards_at_round_start
         )
 
     def test_receives_how_many_cards_at_the_round_start_raises_error_if_no_species(self):
@@ -27,7 +26,7 @@ class TestPlayer(unittest.TestCase):
 
         self.assertRaises(
             ValueError,
-            lambda: self.player.receives_how_many_cards_at_the_round_start
+            lambda: self.player.receives_how_many_cards_at_round_start
         )
 
     def test_add_to_food_bag(self):

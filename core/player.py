@@ -16,7 +16,7 @@ class Player:
         return f'Player {self.name}'
 
     @property
-    def receives_how_many_cards_at_the_round_start(self) -> int:
+    def receives_how_many_cards_at_round_start(self) -> int:
         base_number_of_cards_to_receive = 4
         if len(self.species) == 0:
             raise ValueError(

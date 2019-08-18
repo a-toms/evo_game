@@ -71,7 +71,7 @@ class TestGame(unittest.TestCase):
         self.game.deal_cards()
         self.assertEqual(162, self.game.number_of_cards_in_draw_pile)
 
-    def test_has_enough_cards_to_deal_sufficient_cards_to_each_player__true(self):
+    def test_deal_cards__return_true_if_dealt_cards(self):
         """
         There are 3 players. Each player receives 5 cards in the deal phase.
         """
@@ -79,10 +79,10 @@ class TestGame(unittest.TestCase):
 
         self.assertEqual(
             True,
-            self.game.has_enough_cards_to_deal_to_each_player
+            self.game.deal_cards()
         )
 
-    def test_has_enough_cards_to_deal_sufficient_cards_to_each_player__false(self):
+    def test_deal_cards__return_false_if_insufficient_cards_to_deal(self):
         """
         There are 3 players. Each player receives 5 cards in the deal phase.
         """
@@ -90,6 +90,7 @@ class TestGame(unittest.TestCase):
 
         self.assertEqual(
             False,
-            self.game.has_enough_cards_to_deal_to_each_player
+            self.game.deal_cards()
         )
+
 
