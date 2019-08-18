@@ -4,6 +4,7 @@ class TraitCard:
         self.name = name
         self.climate_effect = 0
         self.food_effect = 0
+        self.trait_categories = ()
 
     def __str__(self) -> str:
         return str(self.name)
