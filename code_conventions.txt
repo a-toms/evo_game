@@ -17,6 +17,10 @@ Before submitting, and if updating, a Pull Request, verify that:
 - All existing tests pass.
 - You have written new tests (see testing section).
 
+Github:
+- Reply to any comment on a pull request.
+- Do not resolve pull request conversations.
+
 
 TESTS:
 - Write tests for every public method except __str__ or __repr__ methods.

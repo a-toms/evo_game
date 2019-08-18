@@ -52,7 +52,7 @@ class Game:
         return total_number
 
     @property
-    def has_enough_cards_to_deal_sufficient_cards_to_each_player(self) -> bool:
+    def has_enough_cards_to_deal_to_each_player(self) -> bool:
         required_number = self.__number_of_cards_to_deal_to_all_players()
         return self.number_of_cards_in_draw_pile >= required_number
 

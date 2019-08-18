@@ -79,7 +79,7 @@ class TestGame(unittest.TestCase):
 
         self.assertEqual(
             True,
-            self.game.has_enough_cards_to_deal_sufficient_cards_to_each_player
+            self.game.has_enough_cards_to_deal_to_each_player
         )
 
     def test_has_enough_cards_to_deal_sufficient_cards_to_each_player__false(self):
@@ -90,6 +90,6 @@ class TestGame(unittest.TestCase):
 
         self.assertEqual(
             False,
-            self.game.has_enough_cards_to_deal_sufficient_cards_to_each_player
+            self.game.has_enough_cards_to_deal_to_each_player
         )
 
