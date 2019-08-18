@@ -19,7 +19,7 @@ class TestSelectFoodAndClimatePhase(unittest.TestCase):
 
         self.assertRaises(ValueError, lambda: self.phase.play_card(player, cards[1]))
 
-    @parameterized.expand(list(itertools.product([-5, -1, 0, 1, 10], [-4, -1, 0, 1, 4])))
+    @parameterized.expand(itertools.product([-5, -1, 0, 1, 10], [-4, -1, 0, 1, 4]))
     def test_food_and_climate_effects(self, food, climate):
         net_food = 0
         net_climate = 0
