@@ -7,7 +7,6 @@ class TestGame(unittest.TestCase):
     def setUp(self) -> None:
         self.game = Game(["Huxley", "Charlesworth", "Haldane"])
 
-
     def test_initialise_players(self):
         player_names = ["Darwin", "Mendel", "Dawkins"]
         game = Game(player_names)
