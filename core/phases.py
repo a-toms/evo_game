@@ -12,9 +12,9 @@ class PhaseState(Enum):
 
 
 class Phase(abc.ABC):
-    def __init__(self, parent: Game):
+    def __init__(self, game: Game):
         self._state = PhaseState.WAITING_FOR_PLAYER_ACTIONS
-        self._parent = parent
+        self._game = game
 
     def _accepting_actions(self) -> bool:
         return PhaseState.WAITING_FOR_PLAYER_ACTIONS == self._state
@@ -30,13 +30,13 @@ class Phase(abc.ABC):
 
 
 class SelectFoodAndClimatePhase(Phase):
-    def __init__(self, parent):
-        super().__init__(parent)
+    def __init__(self, game):
+        super().__init__(game)
         self.watering_hole_cards = []
         self.played_this_round = []
 
     def __update_state(self) -> PhaseState:
-        if set(self._parent.players) == set(self.played_this_round):
+        if set(self._game.players) == set(self.played_this_round):
             self._state = PhaseState.READY_TO_END
 
         return self._state
@@ -45,15 +45,15 @@ class SelectFoodAndClimatePhase(Phase):
         net_effect = sum([card.climate_effect for card in self.watering_hole_cards])
 
         if net_effect > 0:
-            self._parent.board.climate_scale.increase_temperature()
+            self._game.board.climate_scale.increase_temperature()
         elif net_effect < 0:
-            self._parent.board.climate_scale.decrease_temperature()
+            self._game.board.climate_scale.decrease_temperature()
         elif net_effect != 0:
             raise ValueError(f'Unexpected net effect: {net_effect}')
 
     def __update_food(self):
         total_food = sum([card.food_effect for card in self.watering_hole_cards])
-        self._parent.board.add_food_to_watering_hole(total_food)
+        self._game.board.add_food_to_watering_hole(total_food)
 
     def __update_climate_and_food(self):
         self.__update_food()
