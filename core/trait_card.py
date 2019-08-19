@@ -1,4 +1,5 @@
 import weakref
+from core import species
 
 
 class TraitCard:
@@ -12,7 +13,7 @@ class TraitCard:
     def __str__(self) -> str:
         return str(self.name)
 
-    def __eq__(self, other: object) -> bool:
+    def __eq__(self, other: 'TraitCard') -> bool:
         if type(self) == type(other):
             return vars(self) == vars(other)
         else:
@@ -21,7 +22,7 @@ class TraitCard:
     def __hash__(self) -> int:
         return hash(tuple(vars(self).values()))
 
-    def set_owner(self, owner: object):
+    def set_owner(self, owner: 'species.Species'):
         self._owner = weakref.ref(owner)
 
 
