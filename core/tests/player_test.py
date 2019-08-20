@@ -7,11 +7,11 @@ from core.species import Species
 
 class TestPlayer(unittest.TestCase):
     def setUp(self):
-        self.player = Player(name='Dorothy')
+        self.player = Player(name='West-Eberhard')
 
     def test_str(self):
         self.assertEqual(
-            'Dorothy',
+            'West-Eberhard',
             str(self.player),
         )
 
@@ -24,7 +24,10 @@ class TestPlayer(unittest.TestCase):
             self.player.receives_how_many_cards_at_round_start
         )
 
-    def test_receives_how_many_cards_at_the_round_start_raises_error_if_no_species(self):
+    def test_receives_how_many_cards_at_the_round_start_raises_error(self):
+        """
+        Test function raises error if player has no species.
+        """
         self.player.species = []
 
         self.assertRaises(
@@ -47,7 +50,10 @@ class TestPlayer(unittest.TestCase):
             self.player.hand_cards
         )
 
-    def test_add_species__removes_discard_card_from_player_hand_cards(self):
+    def test_add_species_removes_hand_card(self):
+        """
+        Test function removes discard card from player hand cards.
+        """
         self.player.hand_cards.extend(
             [TraitCard(name='Trait 1'), TraitCard(name='Trait 2')]
         )
