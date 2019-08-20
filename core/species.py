@@ -1,3 +1,6 @@
+from core.trait_card import TraitCard
+
+
 class Species:
     def __init__(self):
         self.traits = set()
@@ -15,6 +18,10 @@ class Species:
 
     def add_body_size(self, increase=1):
         self.body_size += increase
+
+    def add_trait(self, trait: TraitCard):
+        self.traits.add(trait)
+        trait.set_owner(self)
 
     def __remove_unfed_population(self):
         self.population = self.food_eaten

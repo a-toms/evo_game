@@ -21,6 +21,10 @@ class PhaseState(Enum):
     GAME_OVER = auto()
 
 
+class Signal(Enum):
+    START_FEEDING_PHASE = auto()
+
+
 class TraitCategory(Enum):
     DEFENSIVE = auto()
     EATING = auto()

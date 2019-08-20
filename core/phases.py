@@ -1,8 +1,11 @@
 import abc
+
+from pydispatch import dispatcher
+
 from core.game import Game
 from core.player import Player
 from core.trait_card import TraitCard
-from core.constants import PhaseState
+from core.constants import PhaseState, Signal
 
 
 class Phase(abc.ABC):
@@ -109,4 +112,10 @@ class SelectFoodAndClimatePhase(Phase):
             self.__update_climate_and_food()
             self._state = PhaseState.ENDED
         return self._state
+
+
+class FeedingPhase(Phase):
+    def __init__(self, game):
+        super().__init__(game)
+        dispatcher.send(signal=Signal.START_FEEDING_PHASE, sender=self)
 

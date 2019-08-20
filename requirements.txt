@@ -1,1 +1,2 @@
 parameterized==0.7.0
+PyDispatcher==2.0.5
