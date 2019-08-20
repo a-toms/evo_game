@@ -7,7 +7,7 @@ class TraitCard:
         self.climate_effect = 0
         self.food_effect = 0
         self.trait_categories = trait_categories
-        self._owner = owner
+        self._parent_species = owner
 
     def __str__(self) -> str:
         return str(self.name)
@@ -21,8 +21,8 @@ class TraitCard:
     def __hash__(self) -> int:
         return hash(tuple(vars(self).values()))
 
-    def set_owner(self, owner: object):
-        self._owner = weakref.ref(owner)
+    def set_owner(self, parent: object):
+        self._parent_species = weakref.ref(parent)
 
 
 
