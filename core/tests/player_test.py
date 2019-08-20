@@ -61,7 +61,10 @@ class TestPlayer(unittest.TestCase):
             self.player.hand_cards
         )
 
-    def test_add_species__adds_species_to_the_left_of_existing_species(self):
+    def test_add_species_left(self):
+        """
+        Test function adds species to the left of existing species.
+        """
         self.player.hand_cards = [TraitCard(name='Trait 1')]
         initial_species = [Species(name='first species')]
         self.player.species = initial_species
@@ -72,10 +75,13 @@ class TestPlayer(unittest.TestCase):
 
         self.assertEqual(
             ['nameless species', 'first species'],
-            [str(self.player.species[0].name), str(self.player.species[1].name)]
+            [self.player.species[0].name, self.player.species[1].name]
         )
 
-    def test_add_species__adds_species_to_the_right_of_existing_species(self):
+    def test_add_species_right(self):
+        """
+        Test function adds species to the right of existing species.
+        """
         self.player.hand_cards = [TraitCard(name='Trait 1')]
         initial_species = [Species(name='first species')]
         self.player.species = initial_species
