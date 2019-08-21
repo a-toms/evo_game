@@ -98,5 +98,5 @@ class TestPlayer(unittest.TestCase):
 
         self.assertEqual(
             ['first species', 'nameless species'],
-            [str(self.player.species[0].name), str(self.player.species[1].name)]
+            [self.player.species[0].name, self.player.species[1].name]
         )
