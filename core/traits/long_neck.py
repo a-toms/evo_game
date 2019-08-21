@@ -14,7 +14,7 @@ class LongNeck(TraitCard):
         # self._owner can be None, otherwise expect it to be a reference.
         # The reference may resolve to None, so we check for that too.
         # Otherwise, resolve the reference and call appropriate method.
-        if self._parent_species is not None and self._parent_species() is not None:
-            self._parent_species().eat_food()
+        if self._owner_species is not None and self._owner_species() is not None:
+            self._owner_species().eat_food()
 
 
