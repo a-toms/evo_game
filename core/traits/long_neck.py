@@ -21,8 +21,8 @@ class LongNeck(TraitCard):
         """
         Checks if the Long Neck trait has been assigned to a species.
 
-        self._owner may be None. Otherwise expect self.owner to be a reference.
-        The reference may resolve to None; so we check for that too.
+        self._owner may be None or a reference. The reference may resolve
+        to None, so we check for that too.
         """
         return (self._owner_species is not None
                 and self._owner_species() is not None)
