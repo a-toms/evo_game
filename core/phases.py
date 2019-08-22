@@ -117,5 +117,7 @@ class SelectFoodAndClimatePhase(Phase):
 class FeedingPhase(Phase):
     def __init__(self, game):
         super().__init__(game)
-        dispatcher.send(signal=Signal.START_FEEDING_PHASE, sender=self)
+        self.send_start_feeding_phase_event()
 
+    def send_start_feeding_phase_event(self):
+        dispatcher.send(signal=Signal.START_FEEDING_PHASE, sender=self)
