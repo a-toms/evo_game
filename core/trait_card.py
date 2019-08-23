@@ -3,7 +3,7 @@ from core import species
 
 
 class TraitCard:
-    def __init__(self, name, trait_categories: tuple = (), owner=None):
+    def __init__(self, name, trait_categories: tuple = (), owner: species = None):
         self.name = name
         self.climate_effect = 0
         self.food_effect = 0

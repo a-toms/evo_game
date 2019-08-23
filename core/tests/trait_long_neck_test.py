@@ -14,9 +14,10 @@ class TestLongNeckFeedingPhase(unittest.TestCase):
 
     def test_feed_at_start_of_feeding_phase(self):
         """
-        Constructor of the FeedingPhase sends the Signal.START_FEEDING_PHASE event.
+        Constructor of the FeedingPhase sends the Signal.BEFORE_FEEDING_PHASE event.
         """
-        FeedingPhase(self.game)
+        feeding_phase = FeedingPhase(self.game)
+        feeding_phase.start()
         expected_food_eaten = 1
 
         self.assertEqual(expected_food_eaten, self.species.food_eaten)
@@ -29,7 +30,8 @@ class TestLongNeckFeedingPhase(unittest.TestCase):
     def test_no_feed_if_no_long_neck_trait(self):
         game_2 = Game(["Dunbar"])
         blank_species = Species()
-        FeedingPhase(game_2)
+        feeding_phase = FeedingPhase(game_2)
+        feeding_phase.start()
 
         expected_food_eaten = 0
 

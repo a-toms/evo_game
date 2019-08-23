@@ -38,7 +38,9 @@ class Species:
         self.food_eaten += food
 
     def __str__(self) -> str:
-        return f'Species: Pop {self.population} - Body size {self.body_size}' \
+        return (
+            f'Species: Pop {self.population} - Body size {self.body_size}'
             f' - Food eaten {self.food_eaten} - Traits {self.traits}'
+        )
 
 

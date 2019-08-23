@@ -39,4 +39,4 @@ class TestBoard(unittest.TestCase):
         amount = 10
         self.board.add_food_to_watering_hole(amount)
 
-        self.assertEqual(amount, self.board.watering_hole)
+        self.assertEqual(amount, self.board.watering_hole_food)

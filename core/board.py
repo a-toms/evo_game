@@ -1,6 +1,6 @@
 class Board:
     def __init__(self):
-        self.watering_hole = 0
+        self.watering_hole_food = 0
         self.climate_scale = ClimateScale()
 
     def add_food_to_watering_hole(self, amount: int):
@@ -10,10 +10,10 @@ class Board:
         self.__change_food(-amount)
 
     def __change_food(self, amount: int):
-        if self.watering_hole + amount >= 0:
-            self.watering_hole += amount
+        if self.watering_hole_food + amount >= 0:
+            self.watering_hole_food += amount
         else:
-            raise ValueError(f'Cannot change watering hole by {amount}, have {self.watering_hole}.')
+            raise ValueError(f'Cannot change watering hole by {amount}, have {self.watering_hole_food}.')
 
 
 class Climate:

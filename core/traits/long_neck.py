@@ -10,7 +10,7 @@ class LongNeck(TraitCard):
         super().__init__(name, categories)
         dispatcher.connect(
             self.handler_start_feeding_phase,
-            Signal.START_FEEDING_PHASE
+            Signal.BEFORE_FEEDING_PHASE
         )
 
     def handler_start_feeding_phase(self):

@@ -78,7 +78,9 @@ class SelectFoodAndClimatePhase(Phase):
         return self._state
 
     def __update_climate(self):
-        net_effect = sum([card.climate_effect for card in self.watering_hole_cards])
+        net_effect = sum(
+            [card.climate_effect for card in self.watering_hole_cards]
+        )
         if net_effect > 0:
             self._game.board.climate_scale.increase_temperature()
         elif net_effect < 0:
@@ -117,7 +119,13 @@ class SelectFoodAndClimatePhase(Phase):
 class FeedingPhase(Phase):
     def __init__(self, game):
         super().__init__(game)
-        self.send_start_feeding_phase_event()
 
-    def send_start_feeding_phase_event(self):
-        dispatcher.send(signal=Signal.START_FEEDING_PHASE, sender=self)
+    def start(self):
+        """
+        This starts the feeding phase of the round by sending a signal that
+        the feeding phase of the round has begun.
+        """
+        dispatcher.send(
+            signal=Signal.BEFORE_FEEDING_PHASE, sender=self,
+            watering_hole_food=self._game.board.watering_hole_food
+        )
