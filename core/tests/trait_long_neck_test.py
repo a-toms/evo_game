@@ -13,9 +13,6 @@ class TestLongNeckFeedingPhase(unittest.TestCase):
         self.species.add_trait(LongNeck())
 
     def test_feed_at_start_of_feeding_phase(self):
-        """
-        Constructor of the FeedingPhase sends the Signal.BEFORE_FEEDING_PHASE event.
-        """
         feeding_phase = FeedingPhase(self.game)
         feeding_phase.start()
         expected_food_eaten = 1
