@@ -89,7 +89,9 @@ class SelectFoodAndClimatePhase(Phase):
             raise ValueError(f'Unexpected net effect: {net_effect}')
 
     def __update_food(self):
-        total_food = sum([card.food_effect for card in self.watering_hole_cards])
+        total_food = sum(
+            [card.food_effect for card in self.watering_hole_cards]
+        )
         if total_food > 0:
             self._game.board.add_food_to_watering_hole(total_food)
 
