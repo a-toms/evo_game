@@ -22,7 +22,7 @@ class PhaseState(Enum):
 
 
 class Signal(Enum):
-    BEFORE_FEEDING_PHASE = auto()  # Note to be deleted: See Green box on p.7 of rules regarding the play order. I also note that there will need to be an order in which these BEFORE_FEEDING_PHASE cards are activated. I suggest, 1. Fertile, 2. Fat Tissue, 3. Long Neck.
+    BEFORE_FEEDING_PHASE = auto()  # Note to B: See Green box on p.7 of rules regarding the play order. I also note that there will need to be an order in which these BEFORE_FEEDING_PHASE cards are activated. I suggest, 1. Fertile, 2. Fat Tissue, 3. Long Neck.
 
 
 class TraitCategory(Enum):
