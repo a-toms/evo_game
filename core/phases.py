@@ -125,7 +125,7 @@ class FeedingPhase(Phase):
     def start(self):
         """
         This starts the feeding phase of the round by sending a signal that
-        the feeding phase of the round has begun.
+        the round's feeding phase has begun.
         """
         dispatcher.send(
             signal=Signal.BEFORE_FEEDING_PHASE, sender=self,
