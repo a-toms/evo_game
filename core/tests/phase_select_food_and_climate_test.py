@@ -45,9 +45,12 @@ class TestSelectFoodAndClimatePhase(unittest.TestCase):
         self.assertEqual(expected_climate_name, actual_climate.name)
 
     def __test_food_effects_for_scenario(self, net_food):
-        expected_watering_hole = max(net_food, 0)
+        expected_watering_hole_food = max(net_food, 0)
 
-        self.assertEqual(expected_watering_hole, self.game.board.watering_hole)
+        self.assertEqual(
+            expected_watering_hole_food,
+            self.game.board.watering_hole_food
+        )
 
     def __create_and_play_card(self, player, food, climate):
         card = TraitCard("Test")
