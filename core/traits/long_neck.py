@@ -14,14 +14,9 @@ class LongNeck(TraitCard):
         )
 
     def handler_start_feeding_phase(self):
-        if self.__owner_species_exists():
-            self.owner_species.eat_food()
+        if self._owner_species_exists():
+            self._owner_species.eat_food()
 
-    def __owner_species_exists(self) -> bool:
-        """
-        Checks if the trait has been assigned to a species.
-        """
-        return self.owner_species is not None
 
 
 

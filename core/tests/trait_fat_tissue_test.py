@@ -84,7 +84,7 @@ class TestFatTissue(unittest.TestCase):
         fat_tissue_card = FatTissue()
 
         self.assertFalse(
-            fat_tissue_card.owner_species_exists()
+            fat_tissue_card._owner_species_exists()
         )
 
     def test_owner_species_exists__returns_true_if_owner_species(self):
@@ -94,7 +94,7 @@ class TestFatTissue(unittest.TestCase):
         self.species.add_trait(fat_tissue_card)
 
         self.assertTrue(
-            fat_tissue_card.owner_species_exists()
+            fat_tissue_card._owner_species_exists()
         )
 
 

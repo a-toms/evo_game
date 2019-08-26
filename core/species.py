@@ -18,8 +18,8 @@ class Species:
         return self.population - self.food_eaten
 
     def add_population(self, increase=1):
-        self.population += increase
-        return self.population
+        if self.population < 6:
+            self.population += increase
 
     def add_body_size(self, increase=1):
         self.body_size += increase

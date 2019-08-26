@@ -8,7 +8,7 @@ class TraitCard:
         self.climate_effect = 0
         self.food_effect = 0
         self.trait_categories = trait_categories
-        self.owner_species = owner
+        self._owner_species = owner
 
     def __str__(self) -> str:
         return str(self.name)
@@ -23,7 +23,13 @@ class TraitCard:
         return hash(tuple(vars(self).values()))
 
     def set_owner(self, owner_species: 'species.Species'):
-        self.owner_species = owner_species
+        self._owner_species = owner_species
+
+    def _owner_species_exists(self) -> bool:
+        """
+        Checks if the trait card has been assigned to a species.
+        """
+        return self._owner_species is not None
 
 
 

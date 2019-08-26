@@ -67,4 +67,25 @@ class TestSpecies(unittest.TestCase):
             self.species.hunger_amount
         )
 
+    def test_add_population(self):
+        self.species.population = 4
+        self.species.add_population()
+
+        self.assertEqual(
+            5,
+            self.species.population
+        )
+
+    def test_add_population_does_not_exceed_six_population(self):
+        """
+        Tests that add_population() will not increase a species's population
+        above six. A population of six is the maximum population.
+        """
+        self.species.population = 6
+        self.species.add_population()
+
+        self.assertEqual(
+            6,
+            self.species.population
+        )
 
