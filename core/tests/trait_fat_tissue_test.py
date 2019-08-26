@@ -30,16 +30,16 @@ class TestFatTissue(unittest.TestCase):
         self.species.food_eaten = 0
         self.species.population = 3
         self.species.body_size = 3
-        self.species.fat_tissue_food_amount = 1
+        self.species.traits['FatTissue'].fat_tissue_food_amount = 3
         self.feeding_phase.start()
 
         self.assertEqual(
-            1,
+            3,
             self.species.food_eaten
         )
         self.assertEqual(
             0,
-            self.species.fat_tissue_food_amount  # The remaining fat tissue food.
+            self.species.traits['FatTissue'].fat_tissue_food_amount  # The remaining fat tissue food.
         )
 
     def test_species_eats_existing_fat_tissue__lower_pop(self):
@@ -51,18 +51,18 @@ class TestFatTissue(unittest.TestCase):
         than the species' fat tissue food.
         """
         self.species.food_eaten = 0
-        self.species.population = 3
+        self.species.population = 1
         self.species.body_size = 3
-        self.species.traits
+        self.species.traits['FatTissue'].fat_tissue_food_amount = 3
         self.feeding_phase.start()
 
         self.assertEqual(
-            3,
+            1,
             self.species.food_eaten
         )
         self.assertEqual(
             2,
-            self.species.fat_tissue_food_amount  # The remaining fat tissue food.
+            self.species.traits['FatTissue'].fat_tissue_food_amount  # The remaining fat tissue food.
         )
 
     def test_species_cannot_add_more_fat_tissue_food_than_body_size(self):

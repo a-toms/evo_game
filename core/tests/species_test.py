@@ -50,10 +50,10 @@ class TestSpecies(unittest.TestCase):
         self.species.population = 2
         self.species.body_size = 3
         self.species.food_eaten = 2
-        self.species.traits.add('Trait 1')
+        self.species.traits['Trait Name'] = 'Trait Instance'
 
         self.assertEqual(
-            'Species: Pop 2 - Body size 3 - Food eaten 2 - Traits {\'Trait 1\'}',
+            'Species: Pop 2 - Body size 3 - Food eaten 2 - Traits [\'Trait Name\']',
             str(self.species)
         )
 

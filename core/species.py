@@ -3,7 +3,7 @@ from core.trait_card import TraitCard
 
 class Species:
     def __init__(self, name='nameless species'):
-        self.traits = set()
+        self.traits = {}
         self.population = 1
         self.body_size = 1
         self.food_eaten = 0
@@ -25,7 +25,7 @@ class Species:
         self.body_size += increase
 
     def add_trait(self, trait: TraitCard):
-        self.traits.add(trait)
+        self.traits[f'{trait.name}'] = trait
         trait.set_owner(self)
 
     def __remove_unfed_population(self):
@@ -42,11 +42,10 @@ class Species:
         if self.is_hungry:
             self.food_eaten += food
 
-
     def __str__(self) -> str:
         return (
             f'Species: Pop {self.population} - Body size {self.body_size}'
-            f' - Food eaten {self.food_eaten} - Traits {self.traits}'
+            f' - Food eaten {self.food_eaten} - Traits {list(self.traits.keys())}'
         )
 
 
