@@ -56,3 +56,15 @@ class TestSpecies(unittest.TestCase):
             'Species: Pop 2 - Body size 3 - Food eaten 2 - Traits {\'Trait 1\'}',
             str(self.species)
         )
+
+    def test_hunger(self):
+        self.species.population = 4
+        self.species.food_eaten = 1
+        expected_hunger = 3
+
+        self.assertEqual(
+            expected_hunger,
+            self.species.hunger_amount
+        )
+
+

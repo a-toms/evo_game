@@ -13,6 +13,10 @@ class Species:
     def is_hungry(self) -> bool:
         return self.food_eaten < self.population
 
+    @property
+    def hunger_amount(self) -> int:
+        return self.population - self.food_eaten
+
     def add_population(self, increase=1):
         self.population += increase
         return self.population
@@ -35,7 +39,9 @@ class Species:
         self.__reset_food_eaten()
 
     def eat_food(self, food=1):
-        self.food_eaten += food
+        if self.is_hungry:
+            self.food_eaten += food
+
 
     def __str__(self) -> str:
         return (
