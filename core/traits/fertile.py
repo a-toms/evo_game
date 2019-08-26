@@ -21,11 +21,10 @@ class Fertile(TraitCard):
 
     def __add_population_if_food_in_the_watering_hole(self, watering_hole_food):
             if watering_hole_food > 0:
-                self._owner_species().add_population()
+                self.owner_species.add_population()
 
     def __owner_species_exists(self) -> bool:
         """
         Checks if the Fertile trait has been assigned to a species.
         """
-        return (self._owner_species is not None
-                and self._owner_species() is not None)
+        return self.owner_species is not None

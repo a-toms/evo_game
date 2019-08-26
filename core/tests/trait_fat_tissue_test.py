@@ -21,16 +21,16 @@ class TestFatTissue(unittest.TestCase):
 
     def test_species_eats_existing_fat_tissue__higher_or_equal_pop(self):
         """
-        Test that the species moves any existing fat tissue food that it has
-        to the species food eaten at the feeding phase's start.
+        Test that the species moves any of its existing fat tissue food
+        to its food eaten at the feeding phase's start.
 
-        This test considers the situation where a species' population is higher
+        This test covers the situation where a species' population is higher
         or equal to the species' fat tissue food.
         """
         self.species.food_eaten = 0
         self.species.population = 3
         self.species.body_size = 3
-        self.species.fat_tissue_food = 1
+        self.species.fat_tissue_food_amount = 1
         self.feeding_phase.start()
 
         self.assertEqual(
@@ -39,7 +39,7 @@ class TestFatTissue(unittest.TestCase):
         )
         self.assertEqual(
             0,
-            self.species.fat_tissue_food  # The remaining fat tissue food.
+            self.species.fat_tissue_food_amount  # The remaining fat tissue food.
         )
 
     def test_species_eats_existing_fat_tissue__lower_pop(self):
@@ -53,7 +53,7 @@ class TestFatTissue(unittest.TestCase):
         self.species.food_eaten = 0
         self.species.population = 3
         self.species.body_size = 3
-        self.species.fat_tissue_food = 5
+        self.species.traits
         self.feeding_phase.start()
 
         self.assertEqual(
@@ -62,11 +62,12 @@ class TestFatTissue(unittest.TestCase):
         )
         self.assertEqual(
             2,
-            self.species.fat_tissue_food  # The remaining fat tissue food.
+            self.species.fat_tissue_food_amount  # The remaining fat tissue food.
         )
 
     def test_species_cannot_add_more_fat_tissue_food_than_body_size(self):
-        self.fail()
+        # Todo: Complete test_
+        pass
 
     def test_species_adds_to_fat_tissue_up_to_its_body_size(self):
         """
@@ -77,28 +78,23 @@ class TestFatTissue(unittest.TestCase):
         self.species.population = 3
         self.species.body_size = 3
 
-        self.fail()
+        # Todo: Complete test
 
+    def test_owner_species_exists__returns_false_if_no_owner_species(self):
+        fat_tissue_card = FatTissue()
 
-
-    def test_fertile_increases_population_by_one_if_food_in_watering_hole(self):
-        self.game.board.watering_hole_food = 1
-        population_after_growth = 2
-        self.feeding_phase.start()
-
-        self.assertEqual(
-            population_after_growth,
-            self.species.population
+        self.assertFalse(
+            fat_tissue_card.owner_species_exists()
         )
 
-    def test_fertile_does_not_increase_population_if_no_food_in_watering_hole(self):
-        self.game.board.watering_hole_food = 0
-        population_without_growth = 1
-        self.feeding_phase.start()
+    def test_owner_species_exists__returns_true_if_owner_species(self):
+        self.game = Game(["Fitch"])
+        self.species = Species()
+        fat_tissue_card = FatTissue()
+        self.species.add_trait(fat_tissue_card)
 
-        self.assertEqual(
-            population_without_growth,
-            self.species.population
+        self.assertTrue(
+            fat_tissue_card.owner_species_exists()
         )
 
 
