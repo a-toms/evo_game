@@ -15,7 +15,7 @@ class LongNeck(TraitCard):
 
     def handler_start_feeding_phase(self):
         if self._owner_species_exists():
-            self._owner_species.eat_food()
+            self._owner_species.eat_food_from_food_bank()
 
 
 

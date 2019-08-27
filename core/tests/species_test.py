@@ -29,7 +29,7 @@ class TestSpecies(unittest.TestCase):
             0,
             self.species.food_eaten
         )
-        self.species.eat_food(4)
+        self.species.eat_food_from_food_bank(4)
 
         self.assertEqual(
             4,

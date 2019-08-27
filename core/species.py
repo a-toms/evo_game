@@ -38,9 +38,15 @@ class Species:
         self.__remove_unfed_population()
         self.__reset_food_eaten()
 
-    def eat_food(self, food=1):
+    def eat_food_from_food_bank(self, food=1):
         if self.is_hungry:
             self.food_eaten += food
+
+    def eat_food_from_watering_hole(self, food=1):
+        # Todo: Continue here.
+        # Add food to species
+        # Remove food from the watering hole in the game instance.
+        pass
 
     def __str__(self) -> str:
         return (

@@ -13,7 +13,10 @@ class Board:
         if self.watering_hole_food + amount >= 0:
             self.watering_hole_food += amount
         else:
-            raise ValueError(f'Cannot change watering hole by {amount}, have {self.watering_hole_food}.')
+            raise ValueError(
+                f'Cannot change watering hole by {amount}. '
+                f'There is {self.watering_hole_food} food in the watering hole.'
+            )
 
 
 class Climate:
