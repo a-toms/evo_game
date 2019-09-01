@@ -14,7 +14,7 @@ class TestSelectFoodAndClimatePhase(unittest.TestCase):
     def test_player_already_played(self):
         cards = [TraitCard("Test1"), TraitCard("Test2")]
         player = self.game.players[0]
-        player.add_to_hand_cards(cards)
+        player._add_to_hand_cards(cards)
         self.climate_phase.play_card(player, cards[0])
 
         self.assertRaises(ValueError, lambda: self.climate_phase.play_card(player, cards[1]))
@@ -56,14 +56,14 @@ class TestSelectFoodAndClimatePhase(unittest.TestCase):
         card = TraitCard("Test")
         card.climate_effect = climate
         card.food_effect = food
-        player.add_to_hand_cards([card])
+        player._add_to_hand_cards([card])
 
         self.climate_phase.play_card(player, card)
 
     def test_ready_to_end(self):
         for player in self.game.players:
             card = TraitCard("Trait1")
-            player.add_to_hand_cards([card])
+            player._add_to_hand_cards([card])
             self.climate_phase.play_card(player, card)
 
         state = self.climate_phase.end()

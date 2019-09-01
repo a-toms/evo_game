@@ -54,4 +54,10 @@ class Species:
             f' - Food eaten {self.food_eaten} - Traits {list(self.traits.keys())}'
         )
 
+    def __repr__(self) -> str:
+        return (
+            f'Species: Pop {self.population} - Body size {self.body_size}'
+            f' - Food eaten {self.food_eaten} - Traits {list(self.traits.keys())}'
+        )
+
 

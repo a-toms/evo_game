@@ -71,7 +71,7 @@ class TestFatTissue(unittest.TestCase):
 
     def test_species_adds_to_fat_tissue_up_to_its_body_size(self):
         """
-        Tests that a species can only add an amount of body tissue food up to
+        Tests that a species can only add an food of body tissue food up to
         the species' body size.
         """
         self.species.food_eaten = 3

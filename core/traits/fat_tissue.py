@@ -27,8 +27,8 @@ class FatTissue(TraitCard):
 
     def __get_amount_of_fat_tissue_to_eat(self) -> int:
         """
-        Gets the amount of fat tissue food that a species can eat. This amount
-        is the amount of food that the species moves from the fat tissue card
+        Gets the food of fat tissue food that a species can eat. This food
+        is the food of food that the species moves from the fat tissue card
         to its food eaten before the food cards are revealed.
         """
         if self._owner_species_exists():

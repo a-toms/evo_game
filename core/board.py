@@ -3,8 +3,8 @@ class Board:
         self.watering_hole_food = 0
         self.climate_scale = ClimateScale()
 
-    def add_food_to_watering_hole(self, amount: int):
-        self.__change_food(amount)
+    def add_to_watering_hole(self, food: int):
+        self.__change_food(food)
 
     def remove_food_from_watering_hole(self, amount=1):
         self.__change_food(-amount)
@@ -64,4 +64,7 @@ class ClimateScale:
         if new_position in self.__scale.keys():
             self.__marker_position += change
         else:
-            raise ValueError(f'Invalid temperature level: {new_position}. Allowed: {list(self.__scale)}')
+            raise ValueError(
+                f'Invalid temperature level: {new_position}. '
+                f'Allowed: {list(self.__scale)}'
+            )

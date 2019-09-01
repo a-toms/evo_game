@@ -2,14 +2,13 @@ import abc
 
 from pydispatch import dispatcher
 
-from core.game import Game
 from core.player import Player
 from core.trait_card import TraitCard
 from core.constants import PhaseState, Signal
 
 
 class Phase(abc.ABC):
-    def __init__(self, game: Game):
+    def __init__(self, game: 'Game'):
         self._state = PhaseState.WAITING_FOR_PLAYER_ACTIONS
         self._game = game
 
@@ -42,7 +41,7 @@ class DealPhase(Phase):
         for player in self._game.players:
             number_of_cards = player.receives_how_many_cards_at_round_start
             cards_to_give = self._game.draw_pile[-number_of_cards:]
-            player.add_to_hand_cards(cards_to_give)
+            player._add_to_hand_cards(cards_to_give)
             self._game.draw_pile = self._game.draw_pile[:-number_of_cards]
 
     def __can_deal(self) -> bool:
@@ -93,7 +92,7 @@ class SelectFoodAndClimatePhase(Phase):
             [card.food_effect for card in self.watering_hole_cards]
         )
         if total_food > 0:
-            self._game.board.add_food_to_watering_hole(total_food)
+            self._game.board.add_to_watering_hole(total_food)
 
     def __update_climate_and_food(self):
         self.__update_food()

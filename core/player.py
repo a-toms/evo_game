@@ -32,7 +32,7 @@ class Player:
         self.food_bag += food
         return self.food_bag
 
-    def add_to_hand_cards(self, cards: List) -> List:
+    def _add_to_hand_cards(self, cards: List) -> List:
         self.hand_cards.extend(cards)
         return self.hand_cards
 
@@ -42,6 +42,17 @@ class Player:
             self.species.append(Species())
         elif position == SpeciesPosition.LEFT:
             self.species.insert(0, Species())
+
+    def select_food_card(self, hand_card_index: int) -> TraitCard:  # Todo: write test
+        try:
+            return self.hand_cards.pop(hand_card_index)
+        except IndexError:
+            raise IndexError (
+                f'The player has no hand card in his hand cards'
+                f' at the index {hand_card_index}'
+            )
+
+
 
 
 
