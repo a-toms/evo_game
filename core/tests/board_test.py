@@ -29,14 +29,24 @@ class TestBoard(unittest.TestCase):
     def setUp(self):
         self.board = Board()
 
-    def test_empty_watering_hole_error(self):
-        self.assertRaises(
-            ValueError,
-            self.board.remove_food_from_watering_hole
+    def test_watering_hole_does_not_become_negative(self):
+        """
+        Test that the lowest food of food that the watering hole
+        can have is 0 food.
+        """
+        amount = -10
+        self.board.update_watering_hole_food(amount)
+
+        self.assertEqual(
+            0,
+            self.board.watering_hole_food
         )
 
-    def test_add_food_to_watering_hole(self):
+    def test_update_watering_hole_food(self):
         amount = 10
-        self.board.add_to_watering_hole(amount)
+        self.board.update_watering_hole_food(amount)
 
-        self.assertEqual(amount, self.board.watering_hole_food)
+        self.assertEqual(
+            amount,
+            self.board.watering_hole_food
+        )

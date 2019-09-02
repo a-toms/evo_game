@@ -8,7 +8,7 @@ class Player:
     def __init__(self, name: str):
         self.name = name
         self.hand_cards = []
-        self.species = [Species()]  # Player starts with one species.
+        self.species = [Species()]  # Player starts with one species_to_feed.
         self.food_bag = 0
 
     def __str__(self) -> str:
@@ -36,12 +36,6 @@ class Player:
         self.hand_cards.extend(cards)
         return self.hand_cards
 
-    def add_species(self, discard_card: TraitCard, position: SpeciesPosition):
-        self.hand_cards.remove(discard_card)
-        if position == SpeciesPosition.RIGHT:
-            self.species.append(Species())
-        elif position == SpeciesPosition.LEFT:
-            self.species.insert(0, Species())
 
     def select_food_card(self, hand_card_index: int) -> TraitCard:  # Todo: write test
         try:
@@ -51,6 +45,38 @@ class Player:
                 f'The player has no hand card in his hand cards'
                 f' at the index {hand_card_index}'
             )
+
+    def add_species(self, discard_card: TraitCard, position: SpeciesPosition):
+        self.hand_cards.remove(discard_card)
+        if position == SpeciesPosition.RIGHT:
+            self.species.append(Species())
+        elif position == SpeciesPosition.LEFT:
+            self.species.insert(0, Species())
+
+    # Todo: Write test
+    def get_any_hungry_species(self) -> List:
+        return [
+            individual_species for individual_species in self.species
+            if individual_species.is_hungry
+        ]
+
+    # Todo: Write test
+    def has_at_least_one_hungry_species(self) -> bool:
+        return len(self.get_any_hungry_species()) > 0
+
+    # Todo: Write test
+    def feed_species(self, species_to_feed: Species, place_to_eat: int):
+        """
+        This function adds food to the eating species and subtracts either:
+        a) food from the watering hole; or b) population from the prey species.
+        """
+        if species_to_feed.is_carnivore is False:
+            index = self.species.index(species_to_feed)
+            eaten_food = self.species[index].eat_food_and_return_eaten_amount(place_to_eat)
+            # Todo: Check here if other species recieve any food. E.g., cooperation.
+
+
+
 
 
 

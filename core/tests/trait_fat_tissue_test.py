@@ -18,37 +18,37 @@ class TestFatTissue(unittest.TestCase):
             1,
             self.species.population
         )
-
-    def test_species_eats_existing_fat_tissue__higher_or_equal_pop(self):
-        """
-        Test that the species moves any of its existing fat tissue food
-        to its food eaten at the feeding phase's start.
-
-        This test covers the situation where a species' population is higher
-        or equal to the species' fat tissue food.
-        """
-        self.species.food_eaten = 0
-        self.species.population = 3
-        self.species.body_size = 3
-        self.species.traits['FatTissue'].fat_tissue_food_amount = 3
-        self.feeding_phase.start()
-
-        self.assertEqual(
-            3,
-            self.species.food_eaten
-        )
-        self.assertEqual(
-            0,
-            self.species.traits['FatTissue'].fat_tissue_food_amount  # The remaining fat tissue food.
-        )
+    #
+    # def test_species_eats_existing_fat_tissue__higher_or_equal_pop(self):
+    #     """
+    #     Test that the species_to_feed moves any of its existing fat tissue food
+    #     to its food eaten at the feeding phase's start.
+    #
+    #     This test covers the situation where a species_to_feed' population is higher
+    #     or equal to the species_to_feed' fat tissue food.
+    #     """
+    #     self.species.food_eaten = 0
+    #     self.species.population = 3
+    #     self.species.body_size = 3
+    #     self.species.traits['FatTissue'].fat_tissue_food_amount = 3
+    #     self.feeding_phase.start()
+    #
+    #     self.assertEqual(
+    #         3,
+    #         self.species.food_eaten
+    #     )
+    #     self.assertEqual(
+    #         0,
+    #         self.species.traits['FatTissue'].fat_tissue_food_amount  # The remaining fat tissue food.
+    #     )
 
     def test_species_eats_existing_fat_tissue__lower_pop(self):
         """
-        Test that the species moves any existing fat tissue food that it has
-        to the species food eaten at the feeding phase's start.
+        Test that the species_to_feed moves any existing fat tissue food that it has
+        to the species_to_feed food eaten at the feeding phase's start.
 
-        This test considers the situation where a species' population is lower
-        than the species' fat tissue food.
+        This test considers the situation where a species_to_feed' population is lower
+        than the species_to_feed' fat tissue food.
         """
         self.species.food_eaten = 0
         self.species.population = 1
@@ -71,8 +71,8 @@ class TestFatTissue(unittest.TestCase):
 
     def test_species_adds_to_fat_tissue_up_to_its_body_size(self):
         """
-        Tests that a species can only add an food of body tissue food up to
-        the species' body size.
+        Tests that a species_to_feed can only add an food of body tissue food up to
+        the species_to_feed' body size.
         """
         self.species.food_eaten = 3
         self.species.population = 3

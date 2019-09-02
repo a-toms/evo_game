@@ -2,12 +2,13 @@ from core.trait_card import TraitCard
 
 
 class Species:
-    def __init__(self, name='nameless species'):
+    def __init__(self, name='nameless species_to_feed'):
         self.traits = {}
         self.population = 1
         self.body_size = 1
         self.food_eaten = 0
         self.name = name
+        self.is_carnivore = False
 
     @property
     def is_hungry(self) -> bool:
@@ -38,15 +39,20 @@ class Species:
         self.__remove_unfed_population()
         self.__reset_food_eaten()
 
-    def eat_food_from_food_bank(self, food=1):
-        if self.is_hungry:
-            self.food_eaten += food
-
-    def eat_food_from_watering_hole(self, food=1):
-        # Todo: Continue here.
-        # Add food to species
-        # Remove food from the watering hole in the game instance.
-        pass
+    def eat_food_and_return_eaten_amount(self, watering_hole=None, eat_from_food_bank=False):
+        if not self.is_hungry:
+            raise ValueError('Species cannot eat because it is not hungry')
+        if self.is_carnivore:
+            pass
+        else:
+            # Todo: Consider here if the species's traits should increase the amount of plant food that it takes.
+            food_to_eat = 1
+            if eat_from_food_bank:
+                self.food_eaten += food_to_eat
+            else:
+                self.food_eaten += food_to_eat
+                watering_hole -= food_to_eat
+        return food_to_eat
 
     def __str__(self) -> str:
         return (

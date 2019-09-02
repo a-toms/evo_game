@@ -22,12 +22,12 @@ class TraitCard:
     def __hash__(self) -> int:
         return hash(tuple(vars(self).values()))
 
-    def set_owner(self, owner_species: 'species.Species'):
+    def set_owner(self, owner_species: 'species_to_feed.Species'):
         self._owner_species = owner_species
 
     def _owner_species_exists(self) -> bool:
         """
-        Checks if the trait card has been assigned to a species.
+        Checks if the trait card has been assigned to a species_to_feed.
         """
         return self._owner_species is not None
 

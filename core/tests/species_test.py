@@ -24,15 +24,16 @@ class TestSpecies(unittest.TestCase):
             self.species.is_hungry
         )
 
-    def test_eat_food(self):
+    def test_eat_food_and_return_eaten_amount(self):
+        food_bank = 1000  # The food bank is unlimited.
         self.assertEqual(
             0,
             self.species.food_eaten
         )
-        self.species.eat_food_from_food_bank(4)
+        self.species.eat_food_and_return_eaten_amount(eat_from_food_bank=True)
 
         self.assertEqual(
-            4,
+            1,
             self.species.food_eaten
         )
 
@@ -78,7 +79,7 @@ class TestSpecies(unittest.TestCase):
 
     def test_add_population_does_not_exceed_six_population(self):
         """
-        Tests that add_population() will not increase a species's population
+        Tests that add_population() will not increase a species_to_feed's population
         above six. A population of six is the maximum population.
         """
         self.species.population = 6

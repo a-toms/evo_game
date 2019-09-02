@@ -9,7 +9,7 @@ from core.traits.fertile import Fertile
 class TestFertile(unittest.TestCase):
     def setUp(self):
         self.game = Game(["Gadagkar"])
-        self.species = Species()  # Each species starts with 1 population
+        self.species = Species()  # Each species_to_feed starts with 1 population
         self.species.add_trait(Fertile())
         self.feeding_phase = FeedingPhase(self.game)
 

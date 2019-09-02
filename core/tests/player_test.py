@@ -16,7 +16,7 @@ class TestPlayer(unittest.TestCase):
         )
 
     def test_receives_how_many_cards_at_the_round_start(self):
-        self.player.species = ['species 1', 'species 2', 'species 3']
+        self.player.species = ['species_to_feed 1', 'species_to_feed 2', 'species_to_feed 3']
         base_number = 4
 
         self.assertEqual(
@@ -26,7 +26,7 @@ class TestPlayer(unittest.TestCase):
 
     def test_receives_how_many_cards_at_the_round_start_raises_error(self):
         """
-        Test function raises error if player has no species.
+        Test function raises error if player has no species_to_feed.
         """
         self.player.species = []
 
@@ -69,10 +69,10 @@ class TestPlayer(unittest.TestCase):
 
     def test_add_species_left(self):
         """
-        Test function adds species to the left of existing species.
+        Test function adds species_to_feed to the left of existing species_to_feed.
         """
         self.player.hand_cards = [TraitCard(name='Trait 1')]
-        initial_species = [Species(name='first species')]
+        initial_species = [Species(name='first species_to_feed')]
         self.player.species = initial_species
         self.player.add_species(
             discard_card=self.player.hand_cards[0],
@@ -80,16 +80,16 @@ class TestPlayer(unittest.TestCase):
         )
 
         self.assertEqual(
-            ['nameless species', 'first species'],
+            ['nameless species_to_feed', 'first species_to_feed'],
             [self.player.species[0].name, self.player.species[1].name]
         )
 
     def test_add_species_right(self):
         """
-        Test function adds species to the right of existing species.
+        Test function adds species_to_feed to the right of existing species_to_feed.
         """
         self.player.hand_cards = [TraitCard(name='Trait 1')]
-        initial_species = [Species(name='first species')]
+        initial_species = [Species(name='first species_to_feed')]
         self.player.species = initial_species
         self.player.add_species(
             discard_card=self.player.hand_cards[0],
@@ -97,6 +97,6 @@ class TestPlayer(unittest.TestCase):
         )
 
         self.assertEqual(
-            ['first species', 'nameless species'],
+            ['first species_to_feed', 'nameless species_to_feed'],
             [self.player.species[0].name, self.player.species[1].name]
         )

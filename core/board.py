@@ -3,23 +3,20 @@ class Board:
         self.watering_hole_food = 0
         self.climate_scale = ClimateScale()
 
-    def add_to_watering_hole(self, food: int):
-        self.__change_food(food)
+    # Todo: write test
+    @property
+    def watering_hole_has_food(self) -> bool:
+        return self.watering_hole_food > 0
 
-    def remove_food_from_watering_hole(self, amount=1):
-        self.__change_food(-amount)
-
-    def __change_food(self, amount: int):
-        if self.watering_hole_food + amount >= 0:
-            self.watering_hole_food += amount
+    def update_watering_hole_food(self, food: int):
+        if self.watering_hole_food + food >= 0:
+            self.watering_hole_food += food
         else:
-            raise ValueError(
-                f'Cannot change watering hole by {amount}. '
-                f'There is {self.watering_hole_food} food in the watering hole.'
-            )
+            self.watering_hole_food = 0
 
 
-class Climate:
+
+class ClimateZone:
     def __init__(self, name: str, food_adjust: int, affected_body_size_range: range, population_impact: int):
         self.name = name
         self.food_adjust = food_adjust
@@ -27,28 +24,28 @@ class Climate:
         self.population_impact = population_impact
 
     def __str__(self) -> str:
-        return f'Climate: {self.name}'
+        return f'ClimateZone: {self.name}'
 
 
 class ClimateScale:
     def __init__(self):
         self.__marker_position = 0
-        self.__scale = {
-            -4: Climate('Ice Age', -30, range(1, 6), 4),
-            -3: Climate('Freezing', -16, range(1, 4), 2),
-            -2: Climate('Cold', -8, range(1, 2), 1),
-            -1: Climate('Cool', -4, range(0), 0),
-            0: Climate('Temperate', 0, range(0), 0),
-            1: Climate('Warm', 4, range(0), 0),
-            2: Climate('Tropical', 12, range(5, 6), 1),
-            3: Climate('Hot', 6, range(3, 6), 2),
-            4: Climate('Scorching', -20, range(1, 6), 4),
+        self.__scale = {  # Note that the below ClimateZones are for a 4-6 player game.
+            -4: ClimateZone('Ice Age', -30, range(1, 6), 4),
+            -3: ClimateZone('Freezing', -16, range(1, 4), 2),
+            -2: ClimateZone('Cold', -8, range(1, 2), 1),
+            -1: ClimateZone('Cool', -4, range(0), 0),
+            0: ClimateZone('Temperate', 0, range(0), 0),
+            1: ClimateZone('Warm', 4, range(0), 0),
+            2: ClimateZone('Tropical', 12, range(5, 6), 1),
+            3: ClimateZone('Hot', 6, range(3, 6), 2),
+            4: ClimateZone('Scorching', -20, range(1, 6), 4),
         }
 
     def __str__(self) -> str:
         return f'Current {self.current_climate()}'
 
-    def current_climate(self) -> Climate:
+    def current_climate(self) -> ClimateZone:
         return self.__scale[self.__marker_position]
 
     def increase_temperature(self):

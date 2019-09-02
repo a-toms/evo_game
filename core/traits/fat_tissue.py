@@ -19,16 +19,17 @@ class FatTissue(TraitCard):
             self.eat_any_fat_tissue_food()
 
     def eat_any_fat_tissue_food(self):
+        watering_hole = 5
         if self._owner_species_exists():
             if self._owner_species.is_hungry and self.fat_tissue_food_amount > 0:
                 amount_to_eat = self.__get_amount_of_fat_tissue_to_eat()
-                self._owner_species.eat_food_from_food_bank(food=amount_to_eat)
+                self._owner_species.eat_food_and_return_eaten_amount(watering_hole=watering_hole)
                 self.fat_tissue_food_amount -= amount_to_eat
 
     def __get_amount_of_fat_tissue_to_eat(self) -> int:
         """
-        Gets the food of fat tissue food that a species can eat. This food
-        is the food of food that the species moves from the fat tissue card
+        Gets the food of fat tissue food that a species_to_feed can eat. This food
+        is the food of food that the species_to_feed moves from the fat tissue card
         to its food eaten before the food cards are revealed.
         """
         if self._owner_species_exists():
@@ -42,7 +43,7 @@ class FatTissue(TraitCard):
 
     def add_to_fat_tissue(self):
         if self.has_unused_fat_tissue():
-            # Todo: Find if the species can eat. Begin by finding if there is food in the watering hole.
+            # Todo: Find if the species_to_feed can eat. Begin by finding if there is food in the watering hole.
             pass
 
 

@@ -29,7 +29,7 @@ class DealPhase(Phase):
         super().__init__(game)
 
     def deal_cards(self) -> bool:
-        if self.__can_deal():
+        if self.can_deal():
             self.__distribute_cards()
             self._state = PhaseState.READY_TO_END
             return True
@@ -44,7 +44,7 @@ class DealPhase(Phase):
             player._add_to_hand_cards(cards_to_give)
             self._game.draw_pile = self._game.draw_pile[:-number_of_cards]
 
-    def __can_deal(self) -> bool:
+    def can_deal(self) -> bool:
         if self.__has_enough_cards_to_deal_to_each_player():
             return True
         else:
@@ -91,8 +91,7 @@ class SelectFoodAndClimatePhase(Phase):
         total_food = sum(
             [card.food_effect for card in self.watering_hole_cards]
         )
-        if total_food > 0:
-            self._game.board.add_to_watering_hole(total_food)
+        self._game.board.update_watering_hole_food(total_food)
 
     def __update_climate_and_food(self):
         self.__update_food()
