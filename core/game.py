@@ -1,3 +1,5 @@
+from typing import List
+
 from core.board import Board
 from core.player import Player
 from core.trait_card import TraitCard
@@ -48,7 +50,34 @@ class Game:
                     return True
         return False
 
+    def add_climate_food_effects_to_watering_hole(self, food_cards: List):
+        food_change = 0
+        for food_card in food_cards:
+            food_change += food_card.food_effect
+        print(f'food of food cards = {food_change}')
 
+        # Adjust food by climate food effect.
+        climate_food_adjust = self.board.climate_scale.current_climate().food_adjust
+        food_change += climate_food_adjust
+
+        # Update watering hole
+        self.board.update_watering_hole_food(food_change)
+
+    def update_climate(self, food_cards):
+        net_climate = 0
+        for food_card in food_cards:
+            net_climate += food_card.climate_effect
+        if net_climate > 0:
+            self.board.climate_scale.increase_temperature()
+        elif net_climate < 0:
+            self.board.climate_scale.decrease_temperature()
+        else:
+            pass
+        print(f'climate after food cards shown = {self.board.climate_scale.current_climate()}')
+
+    def modify_climate(self, food_cards):
+        self.update_climate(food_cards=food_cards)
+        self.add_climate_food_effects_to_watering_hole(food_cards=food_cards)
 
     def play(self):
         # While game.is_not_over
@@ -81,33 +110,12 @@ class Game:
             ## For each player, check if any pre-feeding phase traits. If yes, activate Fertile, Long Neck, and Fat Tissue (in that order)
 
             # Modify environment
-            ## Update climate
+            self.modify_climate(food_cards=food_cards)
             print(f'climate before food cards shown = {self.board.climate_scale.current_climate()}')
-            net_climate = 0
-            for food_card in food_cards:
-                net_climate += food_card.climate_effect
-            if net_climate > 0:
-                self.board.climate_scale.increase_temperature()
-            elif net_climate < 0:
-                self.board.climate_scale.decrease_temperature()
-            else:
-                pass
-            print(f'climate after food cards shown = {self.board.climate_scale.current_climate()}')
 
-            ## Update watering hole food
-            food_change = 0
-            for food_card in food_cards:
-                food_change += food_card.food_effect
-            print(f'food of food cards = {food_change}')
-            # Adjust food by climate food effect.
-            climate_food_adjust = self.board.climate_scale.current_climate().food_adjust
-            food_change += climate_food_adjust
-
-            # Update watering hole
-            self.board.update_watering_hole_food(food_change)
 
             # Feeding phase
-            ## Players feed their species_to_feed until none can eat. Add method for herbivores first -> If there any food on the watering hole.
+            ## Players feed their species_to_feed until none can eat. Add method for herbivores first -> If there any food on the watering holee
             while self.at_least_one_player_can_feed_species():
                 for player in self.players:
                     if self.board.watering_hole_has_food:
@@ -119,10 +127,8 @@ class Game:
                             print(f'{player}\'s species after feeding are {player.species}')
 
             print('Finished feeding phase')
-        print(f'Game over. There are {game.number_of_cards_in_draw_pile} left')
+        print(f'Game over. There are {game.number_of_cards_in_draw_pile} cards left')
         # Check if game over. If yes, exit loop and show winner.
-
-
 
 
 if __name__ == '__main__':
