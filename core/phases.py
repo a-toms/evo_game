@@ -50,6 +50,9 @@ class DealPhase(Phase):
         else:
             return False
 
+    def is_not_game_over(self) -> bool:
+        return self.can_deal()
+
     @property
     def __number_of_cards_in_draw_pile(self) -> int:
         return self._game.number_of_cards_in_draw_pile

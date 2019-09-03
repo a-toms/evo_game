@@ -15,7 +15,6 @@ class Board:
             self.watering_hole_food = 0
 
 
-
 class ClimateZone:
     def __init__(self, name: str, food_adjust: int, affected_body_size_range: range, population_impact: int):
         self.name = name

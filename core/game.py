@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Generator
 
 from core.board import Board
 from core.player import Player
@@ -75,25 +75,43 @@ class Game:
             pass
         print(f'climate after food cards shown = {self.board.climate_scale.current_climate()}')
 
-    def modify_climate(self, food_cards):
+    def modify_environment(self, food_cards):
         self.update_climate(food_cards=food_cards)
         self.add_climate_food_effects_to_watering_hole(food_cards=food_cards)
 
+    def players_feed_their_species(self):
+        """
+        Players feed their species_to_feed until none can eat.
+        # Todo: Add method for carnivores.
+        """
+        while self.at_least_one_player_can_feed_species():
+            for player in self.players:
+                if self.board.watering_hole_has_food:
+                    if player.has_at_least_one_hungry_species():
+                        hungry_species = player.get_any_hungry_species()
+                        print(f'{player}, your hungry species are {hungry_species}')
+                        index = int(input(f'{player}, enter the index of species to feed'))
+                        player.feed_species(hungry_species[index], self.board.watering_hole_food)
+                        print(f'{player}\'s species after feeding are {player.species}')
+
+    def select_food_cards(self) -> Generator:
+        """
+        Select food cards. Wait for all players to submit food cards.
+        """
+        for player in self.players:  # Change this to async so that players can submit food card simultaneously.
+            hand_card_index = int(input(f'{player}, select index of food card'))
+            food_card = player.select_food_card(hand_card_index)
+            print(f'Selected {food_card}')
+            yield food_card
+
     def play(self):
-        # While game.is_not_over
         # Deal cards
         deal_phase = DealPhase(self)
 
-        while deal_phase.can_deal():
+        while deal_phase.is_not_game_over():
             deal_phase.deal_cards()
 
-            # Select food cards. Wait for all players to submit food cards. Begin by checking for this by using a while loop.
-            food_cards = []
-            for player in self.players:  # Change this to async so that players can submit food card simultaneously.
-                hand_card_index = int(input(f'{player}, select index of food card'))
-                food_card = player.select_food_card(hand_card_index)
-                print(f'Selected {food_card}')
-                food_cards.append(food_card)
+            food_cards = list(self.select_food_cards())
             self.board.update_watering_hole_food(food=5)
 
             # First player plays cards. Once, complete next player plays cards, and so on until completion.
@@ -106,25 +124,15 @@ class Game:
                     player.add_species(discard_card=player.hand_cards[0], position=SpeciesPosition.RIGHT)
                 print(player.species)
 
-            # Pre-feeding phase card actions, e.g., Long Neck ## Todo: Cont here! :)
+            # Pre-feeding phase card actions, e.g., Long Neck
             ## For each player, check if any pre-feeding phase traits. If yes, activate Fertile, Long Neck, and Fat Tissue (in that order)
 
             # Modify environment
-            self.modify_climate(food_cards=food_cards)
+            self.modify_environment(food_cards=food_cards)
             print(f'climate before food cards shown = {self.board.climate_scale.current_climate()}')
 
-
             # Feeding phase
-            ## Players feed their species_to_feed until none can eat. Add method for herbivores first -> If there any food on the watering holee
-            while self.at_least_one_player_can_feed_species():
-                for player in self.players:
-                    if self.board.watering_hole_has_food:
-                        if player.has_at_least_one_hungry_species():
-                            hungry_species = player.get_any_hungry_species()
-                            print(f'{player}, your hungry species are {hungry_species}')
-                            index = int(input(f'{player}, enter the index of species to feed'))
-                            player.feed_species(hungry_species[index], self.board.watering_hole_food)
-                            print(f'{player}\'s species after feeding are {player.species}')
+            self.players_feed_their_species()
 
             print('Finished feeding phase')
         print(f'Game over. There are {game.number_of_cards_in_draw_pile} cards left')
